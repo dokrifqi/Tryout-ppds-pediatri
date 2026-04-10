@@ -1,0 +1,317 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║      ✅ PEDIATRI RPG MODE - PLAYER REGISTRATION SYSTEM ✅                ║
+║                                                                            ║
+║              Peserta harus input nama dan pilih dokter tipe               ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════════════════════
+🎮 GAME FLOW DENGAN REGISTRATION
+═══════════════════════════════════════════════════════════════════════════════
+
+STEP 1: DIFFICULTY SELECTION (Awal)
+┌──────────────────────────────────────────────────────────────┐
+│ "Pilih tipe dokter Anda!"                                    │
+│                                                              │
+│ [👨‍⚕️ Dokter Klinik] [👩‍⚕️ Dokter Puskesmas]           │
+│ [🚑 Dokter IGD]       [🏥 Dokter 3T]                        │
+│                                                              │
+│ Klik salah satu untuk lanjut                                │
+└──────────────────────────────────────────────────────────────┘
+         ↓
+STEP 2: PLAYER REGISTRATION (BARU!)
+┌──────────────────────────────────────────────────────────────┐
+│ ⚔️ Pendaftaran Peserta ⚔️                                   │
+│                                                              │
+│ 📝 Isi Nama Peserta:                                        │
+│ [________________] (text input field)                       │
+│ Placeholder: "Masukkan nama Anda..."                        │
+│                                                              │
+│ 🏥 Siapakah Kamu? Pilih Tipe Dokter:                       │
+│                                                              │
+│ [👨‍⚕️ Dokter Klinik] [👩‍⚕️ Dokter Puskesmas]           │
+│ Easy (30 HP)         Medium (20 HP)                         │
+│                                                              │
+│ [🚑 Dokter IGD]       [🏥 Dokter 3T]                        │
+│ Hard (10 HP)         Very Hard (5 HP)                       │
+│                                                              │
+│ Pilihan: [Selected Dokter Name] (ditampilkan saat pilih)   │
+│                                                              │
+│ [⚔️ MULAI PERTARUNGAN!]                                    │
+└──────────────────────────────────────────────────────────────┘
+         ↓
+STEP 3: GAME STARTS
+├─ Boss list displayed
+├─ Player name shown in header
+└─ Game begins!
+
+═══════════════════════════════════════════════════════════════════════════════
+📝 FORM FIELDS EXPLANATION
+═══════════════════════════════════════════════════════════════════════════════
+
+1. NAMA PESERTA (Text Input)
+   ├─ Label: "📝 Isi Nama Peserta:"
+   ├─ Placeholder: "Masukkan nama Anda..."
+   ├─ Required: YES (validation check)
+   ├─ Length: Any (no limit)
+   ├─ Error message: "❌ Silakan masukkan nama Anda terlebih dahulu!"
+   └─ Max display: Shows in game header as "📝 Peserta: [Nama]"
+
+2. TIPE DOKTER (Selection Grid)
+   ├─ Label: "🏥 Siapakah Kamu? Pilih Tipe Dokter:"
+   ├─ Format: 2×2 grid with 4 options
+   ├─ Required: YES (validation check)
+   ├─ Options:
+   │  ├─ 👨‍⚕️ Dokter Klinik (Easy, 30 HP)
+   │  ├─ 👩‍⚕️ Dokter Puskesmas (Medium, 20 HP)
+   │  ├─ 🚑 Dokter IGD (Hard, 10 HP)
+   │  └─ 🏥 Dokter 3T (Very Hard, 5 HP)
+   ├─ Visual feedback:
+   │  ├─ Default: Border colored (blue/purple/pink/orange)
+   │  ├─ On select: Background turns dark blue
+   │  └─ Selected text shows: "Pilihan: [Dokter Name]"
+   └─ Error message: "❌ Silakan pilih tipe dokter Anda!"
+
+═══════════════════════════════════════════════════════════════════════════════
+🔍 DOKTER TYPES EXPLAINED
+═══════════════════════════════════════════════════════════════════════════════
+
+👨‍⚕️ DOKTER KLINIK (Easy Mode)
+   │
+   ├─ Tipe: Praktisi Klinik Umum
+   ├─ HP: 30
+   ├─ Max Mistakes: 30
+   ├─ Avg Mistakes per Boss: 3
+   ├─ Difficulty Rating: ⭐ (Learning/Beginner)
+   ├─ Color Theme: Blue (#3b82f6)
+   └─ Description: "Margin besar, santai, untuk pemula"
+
+👩‍⚕️ DOKTER PUSKESMAS (Medium Mode)
+   │
+   ├─ Tipe: Puskesmas / Primary Care
+   ├─ HP: 20
+   ├─ Max Mistakes: 20
+   ├─ Avg Mistakes per Boss: 2
+   ├─ Difficulty Rating: ⭐⭐ (Standard/Balanced)
+   ├─ Color Theme: Purple (#8b5cf6)
+   └─ Description: "Balanced, harus fokus, rekomendasi"
+
+🚑 DOKTER IGD (Hard Mode)
+   │
+   ├─ Tipe: Instalasi Gawat Darurat
+   ├─ HP: 10
+   ├─ Max Mistakes: 10
+   ├─ Avg Mistakes per Boss: 1
+   ├─ Difficulty Rating: ⭐⭐⭐ (Challenge/Advanced)
+   ├─ Color Theme: Pink (#ec4899)
+   └─ Description: "Presisi tinggi diperlukan!"
+
+🏥 DOKTER 3T (Very Hard Mode)
+   │
+   ├─ Tipe: Terdepan, Terluar, Tertinggal
+   ├─ HP: 5
+   ├─ Max Mistakes: 5
+   ├─ Avg Mistakes per Boss: 0.5
+   ├─ Difficulty Rating: ⭐⭐⭐⭐⭐ (Extreme/Expert)
+   ├─ Color Theme: Orange (#f59e0b)
+   └─ Description: "HANYA 5 KESALAHAN! EXTREME MODE!"
+
+═══════════════════════════════════════════════════════════════════════════════
+✅ VALIDATION RULES
+═══════════════════════════════════════════════════════════════════════════════
+
+NAMA PESERTA:
+├─ Must be filled (not empty)
+├─ Trimmed (whitespace removed)
+├─ Can contain: Letters, numbers, spaces, special characters
+├─ If empty → Alert: "❌ Silakan masukkan nama Anda terlebih dahulu!"
+└─ Then: Focus back on name input field
+
+TIPE DOKTER:
+├─ Must be selected (one of: klinik, puskesmas, igd, tiga_t)
+├─ If not selected → Alert: "❌ Silakan pilih tipe dokter Anda!"
+└─ Then: User must click a dokter option
+
+BUTTON STATE:
+├─ "⚔️ MULAI PERTARUNGAN!" button always active
+├─ Validation happens on click
+├─ If validation fails: Show alert, don't proceed
+└─ If validation passes: Start game
+
+═══════════════════════════════════════════════════════════════════════════════
+🎮 IN-GAME DISPLAY
+═══════════════════════════════════════════════════════════════════════════════
+
+Player Header (Top Left):
+┌──────────────────────────────────┐
+│ 👨‍⚕️ DOKTER KLINIK             │
+│ 📝 Peserta: Ahmad Riyadi         │
+│ EASY                             │
+│                                  │
+│ ❤️ HP                           │
+│ ▮▮▮▮▮▮▮▮▮▮ 30/30              │
+│                                  │
+│ Max Mistakes: 30                 │
+└──────────────────────────────────┘
+
+Components:
+├─ Dokter icon + name (👨‍⚕️ DOKTER KLINIK)
+├─ Player name display (📝 Peserta: [Player Name])
+├─ Difficulty level (EASY)
+├─ HP bar (visual)
+├─ Current HP (30/30)
+└─ Max mistakes info (Max Mistakes: 30)
+
+Updated on:
+├─ Game starts (after registration)
+├─ Each boss battle
+└─ After victory/damage
+
+═══════════════════════════════════════════════════════════════════════════════
+🔧 CODE FUNCTIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. selectClass(classType)
+   ├─ Called: When user clicks dokter card (STEP 1)
+   ├─ Action: Hide class selection, show registration form
+   ├─ Parameters: classType (klinik, puskesmas, igd, tiga_t)
+   └─ Result: Registration form displayed
+
+2. selectDokter(dokterType, element)
+   ├─ Called: When user clicks dokter option in registration (STEP 2)
+   ├─ Action: Highlight selected dokter, show confirmation
+   ├─ Parameters: dokterType, HTML element
+   └─ Result: Visual feedback + confirmation text
+
+3. startGameWithPlayer()
+   ├─ Called: When user clicks "MULAI PERTARUNGAN!" button
+   ├─ Validation:
+   │  ├─ Check name not empty
+   │  └─ Check dokter selected
+   ├─ If validation fails: Show alert, stop
+   ├─ If validation passes:
+   │  ├─ Store player name & dokter type
+   │  ├─ Set game stats (HP, difficulty, etc)
+   │  ├─ Hide registration form
+   │  ├─ Show game screen
+   │  └─ Initialize game (load boss 1)
+   └─ Result: Game starts with player info
+
+═══════════════════════════════════════════════════════════════════════════════
+📊 DATA STORED IN gameState
+═══════════════════════════════════════════════════════════════════════════════
+
+After Registration:
+├─ gameState.playerName = "Ahmad Riyadi" (string)
+├─ gameState.class = "klinik" (dokter type)
+├─ gameState.playerMaxHP = 30 (from CLASSES)
+├─ gameState.playerHP = 30 (current HP)
+├─ gameState.playerDamage = 10
+├─ gameState.playerDefense = 8
+├─ gameState.difficulty = "EASY"
+└─ gameState.selectedDokter = "klinik"
+
+Used for:
+├─ Display in header
+├─ Game mechanics (HP system)
+├─ Difficulty calculations
+├─ Victory/defeat logic
+└─ Final statistics
+
+═══════════════════════════════════════════════════════════════════════════════
+🎯 EXAMPLE GAMEPLAY
+═══════════════════════════════════════════════════════════════════════════════
+
+User opens game:
+1. Sees: "Pilih tipe dokter Anda!" (STEP 1)
+2. Clicks: "👨‍⚕️ Dokter Klinik" card
+
+Registration form appears (STEP 2):
+3. Types: "Ahmad Riyadi" in name field
+4. Sees 4 dokter options in 2×2 grid
+5. Clicks: "👩‍⚕️ Dokter Puskesmas" (turns dark blue)
+6. Sees: "Pilihan: Dokter Puskesmas" confirmation
+
+Clicks button:
+7. "⚔️ MULAI PERTARUNGAN!" button
+
+Validation:
+✅ Name filled: "Ahmad Riyadi"
+✅ Dokter selected: "Dokter Puskesmas"
+
+Game starts:
+├─ Header shows:
+│  ├─ Icon + name: 👩‍⚕️ DOKTER PUSKESMAS
+│  ├─ Player name: 📝 Peserta: Ahmad Riyadi
+│  ├─ Difficulty: MEDIUM
+│  ├─ HP bar: 20/20
+│  └─ Max mistakes: 20
+├─ Boss 1 loaded
+├─ 10 soal displayed
+└─ User plays game!
+
+═══════════════════════════════════════════════════════════════════════════════
+✨ USER EXPERIENCE IMPROVEMENTS
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ Personalization
+   ├─ Game shows player's actual name
+   ├─ Not generic "Player" or "User"
+   └─ Makes experience feel personal
+
+✅ Clear Choice Confirmation
+   ├─ Selected dokter highlighted
+   ├─ Confirmation text displayed
+   └─ User knows exact choice before starting
+
+✅ Validation Feedback
+   ├─ Clear error messages (Indonesian)
+   ├─ Focus returns to empty field
+   ├─ User knows exactly what's wrong
+   └─ Prevents accidental game starts
+
+✅ Game Immersion
+   ├─ Name shown during gameplay
+   ├─ Dokter type visible in header
+   ├─ Stats align with difficulty
+   └─ Consistent theming throughout
+
+═══════════════════════════════════════════════════════════════════════════════
+🚀 DEPLOYMENT
+═══════════════════════════════════════════════════════════════════════════════
+
+Files Updated:
+├─ index_RPG_GAME_MODE.html
+│  ├─ Added registration form HTML
+│  ├─ Added selectDokter() function
+│  ├─ Added startGameWithPlayer() function
+│  ├─ Updated loadBoss() to show player name
+│  ├─ Updated loadFinalBoss() to show player name
+│  └─ Status: ✅ READY
+└─ soal_format_lengkap.js
+   └─ No changes needed
+
+Testing:
+✅ Difficulty selection appears
+✅ Clicking dokter shows registration
+✅ Name input works
+✅ Dokter selection highlights
+✅ Validation works (empty name)
+✅ Validation works (no dokter selected)
+✅ Game starts with player info
+✅ Player name displays in header
+✅ Dokter info displays in header
+✅ Game plays normally
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ PLAYER REGISTRATION SYSTEM COMPLETE!
+
+Flow: Difficulty → Registration → Game Start
+Features: Name input, dokter selection, validation, display
+Status: Ready to deploy
+
+Upload and test! 🎮
+
+═══════════════════════════════════════════════════════════════════════════════

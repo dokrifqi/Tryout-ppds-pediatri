@@ -21,7 +21,7 @@ h1 { text-align: center; color: #60a5fa; font-size: 2.5em; text-shadow: 0 0 20px
 /* ===== CLASS SELECTION ===== */
 .class-selection {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
   padding: 40px 20px;
 }
@@ -34,11 +34,39 @@ h1 { text-align: center; color: #60a5fa; font-size: 2.5em; text-shadow: 0 0 20px
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 300px;
 }
 .class-card:hover {
   transform: translateY(-5px);
-  border-color: #7c3aed;
-  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+  border-color: #60a5fa;
+  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
+}
+.class-card.card-klinik {
+  border-left: 5px solid #3b82f6;
+}
+.class-card.card-klinik:hover {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+}
+.class-card.card-puskesmas {
+  border-left: 5px solid #8b5cf6;
+}
+.class-card.card-puskesmas:hover {
+  background: linear-gradient(135deg, #4c1d95 0%, #5b21b6 100%);
+}
+.class-card.card-igd {
+  border-left: 5px solid #ec4899;
+}
+.class-card.card-igd:hover {
+  background: linear-gradient(135deg, #831843 0%, #9d174d 100%);
+}
+.class-card.card-3t {
+  border-left: 5px solid #f59e0b;
+}
+.class-card.card-3t:hover {
+  background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
 }
 .class-icon { font-size: 3.5em; margin-bottom: 10px; }
 .class-name { font-size: 1.5em; font-weight: bold; color: #60a5fa; margin-bottom: 8px; }
@@ -259,7 +287,10 @@ h1 { text-align: center; color: #60a5fa; font-size: 2.5em; text-shadow: 0 0 20px
   border-color: #a855f7;
   box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
 }
-.boss-item:hover { transform: translateY(-2px); }
+.boss-item:hover { 
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+}
 .boss-number { font-weight: bold; color: #60a5fa; }
 .boss-name { font-size: 0.85em; color: #cbd5e1; margin-top: 5px; }
 
@@ -332,73 +363,137 @@ h1 { text-align: center; color: #60a5fa; font-size: 2.5em; text-shadow: 0 0 20px
 <!-- CLASS SELECTION -->
 <div id="classSelection" class="menu-section">
   <div class="info-banner">
-    🎮 Pilih tingkat kesulitan! Semakin tinggi, semakin besar challenge dan reward!
+    👨‍⚕️ Pilih tipe dokter Anda! Setiap tipe memiliki tingkat kesulitan berbeda.
   </div>
   
   <div class="class-selection">
-    <!-- EASY -->
-    <div class="class-card" onclick="selectClass('easy')">
-      <div class="class-icon">🟢</div>
-      <div class="class-name">EASY MODE</div>
-      <div class="class-desc">Pemula / Learning Mode</div>
+    <!-- DOKTER KLINIK -->
+    <div class="class-card card-klinik" onclick="selectClass('klinik')">
+      <div class="class-icon">👨‍⚕️</div>
+      <div class="class-name">Dokter Klinik</div>
+      <div class="class-desc">Praktisi Klinik Umum</div>
       <div class="class-stats">
         <div class="stat-item">❤️ HP: 30</div>
         <div class="stat-item">⚡ Max Mistakes: 30</div>
         <div class="stat-item">🎯 Avg per Boss: 3</div>
       </div>
-      <div style="font-size: 0.85em; color: #10b981; margin-top: 10px; font-style: italic;">
-        Margin besar, santai, paham dulu
+      <div style="font-size: 0.85em; color: #6b7280; margin-top: 10px; font-style: italic;">
+        Margin besar, santai, untuk pemula
       </div>
     </div>
 
-    <!-- NORMAL -->
-    <div class="class-card" onclick="selectClass('normal')">
-      <div class="class-icon">🟡</div>
-      <div class="class-name">NORMAL MODE</div>
-      <div class="class-desc">Standard / Recommended</div>
+    <!-- DOKTER PUSKESMAS -->
+    <div class="class-card card-puskesmas" onclick="selectClass('puskesmas')">
+      <div class="class-icon">👩‍⚕️</div>
+      <div class="class-name">Dokter Puskesmas</div>
+      <div class="class-desc">Puskesmas / Primary Care</div>
       <div class="class-stats">
         <div class="stat-item">❤️ HP: 20</div>
         <div class="stat-item">⚡ Max Mistakes: 20</div>
         <div class="stat-item">🎯 Avg per Boss: 2</div>
       </div>
-      <div style="font-size: 0.85em; color: #f59e0b; margin-top: 10px; font-style: italic;">
-        Balanced, harus fokus
+      <div style="font-size: 0.85em; color: #6b7280; margin-top: 10px; font-style: italic;">
+        Balanced, harus fokus, rekomendasi
       </div>
     </div>
 
-    <!-- HARD -->
-    <div class="class-card" onclick="selectClass('hard')">
-      <div class="class-icon">🔴</div>
-      <div class="class-name">HARD MODE</div>
-      <div class="class-desc">Expert / Challenge</div>
+    <!-- DOKTER IGD -->
+    <div class="class-card card-igd" onclick="selectClass('igd')">
+      <div class="class-icon">🚑</div>
+      <div class="class-name">Dokter IGD</div>
+      <div class="class-desc">Instalasi Gawat Darurat</div>
       <div class="class-stats">
         <div class="stat-item">❤️ HP: 10</div>
         <div class="stat-item">⚡ Max Mistakes: 10</div>
         <div class="stat-item">🎯 Avg per Boss: 1</div>
       </div>
-      <div style="font-size: 0.85em; color: #ef4444; margin-top: 10px; font-style: italic;">
+      <div style="font-size: 0.85em; color: #6b7280; margin-top: 10px; font-style: italic;">
         Presisi tinggi diperlukan!
       </div>
     </div>
 
-    <!-- VERY HARD -->
-    <div class="class-card" onclick="selectClass('veryhard')">
-      <div class="class-icon">💀</div>
-      <div class="class-name">VERY HARD MODE</div>
-      <div class="class-desc">Insane / Hardcore</div>
+    <!-- DOKTER 3T -->
+    <div class="class-card card-3t" onclick="selectClass('tiga_t')">
+      <div class="class-icon">🏥</div>
+      <div class="class-name">Dokter 3T</div>
+      <div class="class-desc">Terdepan, Terluar, Tertinggal</div>
       <div class="class-stats">
         <div class="stat-item">❤️ HP: 5</div>
         <div class="stat-item">⚡ Max Mistakes: 5</div>
         <div class="stat-item">🎯 Per Boss: 0.5</div>
       </div>
-      <div style="font-size: 0.85em; color: #a78bfa; margin-top: 10px; font-style: italic; font-weight: bold;">
-        HANYA 5 KESALAHAN UNTUK SELURUH GAME! 😱
+      <div style="font-size: 0.85em; color: #6b7280; margin-top: 10px; font-style: italic; font-weight: bold;">
+        HANYA 5 KESALAHAN! EXTREME MODE! 😱
       </div>
     </div>
   </div>
 </div>
 
-<!-- GAME SCREEN -->
+<!-- PLAYER REGISTRATION -->
+<div id="playerRegistration" style="display: none;">
+  <div class="registration-container">
+    <h2 style="color: #60a5fa; margin-bottom: 30px; font-size: 1.8em;">⚔️ Pendaftaran Peserta ⚔️</h2>
+    
+    <div class="registration-form">
+      <div class="form-group">
+        <label for="playerName" style="color: #cbd5e1; font-size: 1.1em; margin-bottom: 10px; display: block;">
+          📝 Isi Nama Peserta:
+        </label>
+        <input 
+          type="text" 
+          id="playerName" 
+          placeholder="Masukkan nama Anda..." 
+          class="input-field"
+          style="width: 100%; padding: 15px; border-radius: 8px; border: 2px solid #475569; background: #1e293b; color: #e2e8f0; font-size: 1em; margin-bottom: 30px;"
+        />
+      </div>
+
+      <div class="form-group">
+        <label style="color: #cbd5e1; font-size: 1.1em; margin-bottom: 15px; display: block;">
+          🏥 Siapakah Kamu? Pilih Tipe Dokter:
+        </label>
+        
+        <div class="dokter-selection" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px;">
+          <!-- Dokter Klinik -->
+          <div class="dokter-option" onclick="selectDokter('klinik', this)" style="padding: 15px; background: #1e293b; border: 2px solid #3b82f6; border-radius: 8px; cursor: pointer; text-align: center; transition: all 0.3s ease;">
+            <div style="font-size: 2em; margin-bottom: 10px;">👨‍⚕️</div>
+            <div style="color: #60a5fa; font-weight: bold;">Dokter Klinik</div>
+            <div style="color: #94a3b8; font-size: 0.9em;">Easy (30 HP)</div>
+          </div>
+
+          <!-- Dokter Puskesmas -->
+          <div class="dokter-option" onclick="selectDokter('puskesmas', this)" style="padding: 15px; background: #1e293b; border: 2px solid #8b5cf6; border-radius: 8px; cursor: pointer; text-align: center; transition: all 0.3s ease;">
+            <div style="font-size: 2em; margin-bottom: 10px;">👩‍⚕️</div>
+            <div style="color: #60a5fa; font-weight: bold;">Dokter Puskesmas</div>
+            <div style="color: #94a3b8; font-size: 0.9em;">Medium (20 HP)</div>
+          </div>
+
+          <!-- Dokter IGD -->
+          <div class="dokter-option" onclick="selectDokter('igd', this)" style="padding: 15px; background: #1e293b; border: 2px solid #ec4899; border-radius: 8px; cursor: pointer; text-align: center; transition: all 0.3s ease;">
+            <div style="font-size: 2em; margin-bottom: 10px;">🚑</div>
+            <div style="color: #60a5fa; font-weight: bold;">Dokter IGD</div>
+            <div style="color: #94a3b8; font-size: 0.9em;">Hard (10 HP)</div>
+          </div>
+
+          <!-- Dokter 3T -->
+          <div class="dokter-option" onclick="selectDokter('tiga_t', this)" style="padding: 15px; background: #1e293b; border: 2px solid #f59e0b; border-radius: 8px; cursor: pointer; text-align: center; transition: all 0.3s ease;">
+            <div style="font-size: 2em; margin-bottom: 10px;">🏥</div>
+            <div style="color: #60a5fa; font-weight: bold;">Dokter 3T</div>
+            <div style="color: #94a3b8; font-size: 0.9em;">Very Hard (5 HP)</div>
+          </div>
+        </div>
+
+        <div id="selectedDokter" style="color: #fbbf24; text-align: center; margin-bottom: 20px; font-weight: bold; display: none;">
+          Pilihan: <span id="selectedDokterName"></span>
+        </div>
+      </div>
+
+      <button id="startGameBtn" onclick="startGameWithPlayer()" class="btn btn-submit" style="width: 100%; padding: 15px; font-size: 1.1em; margin-top: 20px;">
+        ⚔️ MULAI PERTARUNGAN!
+      </button>
+    </div>
+  </div>
+</div>
 <div id="gameScreen" class="game-screen">
   <!-- HEADER: Player, Boss, Battle Info -->
   <div class="game-header">
@@ -478,36 +573,36 @@ const FINAL_BOSS = {
 };
 
 const CLASSES = {
-  easy: {
-    name: "🟢 EASY MODE",
+  klinik: {
+    name: "👨‍⚕️ Dokter Klinik",
     hp: 30,
     damage: 10,
     defense: 8,
-    description: "Pemula - Margin besar untuk salah",
+    description: "Easy Mode - Praktisi Klinik Umum",
     difficulty: "EASY"
   },
-  normal: {
-    name: "🟡 NORMAL MODE",
+  puskesmas: {
+    name: "👩‍⚕️ Dokter Puskesmas",
     hp: 20,
     damage: 10,
     defense: 8,
-    description: "Standard - Harus fokus",
-    difficulty: "NORMAL"
+    description: "Medium Mode - Dokter Puskesmas",
+    difficulty: "MEDIUM"
   },
-  hard: {
-    name: "🔴 HARD MODE",
+  igd: {
+    name: "🚑 Dokter IGD",
     hp: 10,
     damage: 10,
     defense: 8,
-    description: "Expert - Sangat presisi",
+    description: "Hard Mode - Dokter Instalasi Gawat Darurat",
     difficulty: "HARD"
   },
-  veryhard: {
-    name: "💀 VERY HARD MODE",
+  tiga_t: {
+    name: "🏥 Dokter 3T",
     hp: 5,
     damage: 10,
     defense: 8,
-    description: "Insane - HANYA 5 KESALAHAN!",
+    description: "Very Hard Mode - Dokter Terdepan, Terluar, Tertinggal",
     difficulty: "VERY HARD"
   }
 };
@@ -537,19 +632,14 @@ let gameState = {
 
 // ===== CLASS SELECTION =====
 function selectClass(classType) {
-  const classInfo = CLASSES[classType];
-  gameState.class = classType;
-  gameState.playerMaxHP = classInfo.hp;
-  gameState.playerHP = classInfo.hp;
-  gameState.playerDamage = classInfo.damage;
-  gameState.playerDefense = classInfo.defense;
-  gameState.difficulty = classInfo.difficulty;
+  gameState.classType = classType;
   
+  // Hide class selection, show registration
   document.getElementById('classSelection').style.display = 'none';
-  document.getElementById('gameScreen').style.display = 'block';
+  document.getElementById('playerRegistration').style.display = 'block';
   
-  renderBossList();
-  loadBoss(0);
+  // Focus on name input
+  document.getElementById('playerName').focus();
 }
 
 // ===== BOSS LIST =====
@@ -561,7 +651,7 @@ function renderBossList() {
     const status = isCompleted ? 'completed' : (isActive ? 'active' : '');
     
     html += `
-      <div class="boss-item ${status}">
+      <div class="boss-item ${status}" onclick="loadBoss(${i})">
         <div style="font-size: 2em;">${boss.icon}</div>
         <div class="boss-number">Boss ${i + 1}</div>
         <div class="boss-name">${isCompleted ? '✓' : ''}</div>
@@ -574,7 +664,7 @@ function renderBossList() {
     const isFinalActive = gameState.isFinalBoss;
     const status = isFinalActive ? 'active' : 'completed';
     html += `
-      <div class="boss-item ${status}">
+      <div class="boss-item ${status}" onclick="loadFinalBoss()">
         <div style="font-size: 2em;">👑</div>
         <div class="boss-number">DEWA</div>
         <div class="boss-name">${gameState.isFinalBoss ? '🌟' : '✓'}</div>
@@ -619,6 +709,7 @@ function loadBoss(bossIndex) {
   document.getElementById('bossName').innerHTML = title;
   document.getElementById('bossLevel').innerHTML = boss.difficulty;
   document.getElementById('playerName').innerHTML = CLASSES[gameState.class].name;
+  document.getElementById('playerNameDisplay').innerHTML = `📝 Peserta: <strong>${gameState.playerName}</strong>`;
   document.getElementById('difficultyLabel').innerHTML = CLASSES[gameState.class].difficulty;
   document.getElementById('maxMistakes').innerHTML = gameState.playerMaxHP;
   document.getElementById('playerLevel').innerHTML = gameState.playerLevel;
@@ -644,6 +735,7 @@ function loadFinalBoss() {
   document.getElementById('bossName').innerHTML = title;
   document.getElementById('bossLevel').innerHTML = boss.difficulty;
   document.getElementById('playerName').innerHTML = CLASSES[gameState.class].name;
+  document.getElementById('playerNameDisplay').innerHTML = `📝 Peserta: <strong>${gameState.playerName}</strong>`;
   document.getElementById('difficultyLabel').innerHTML = CLASSES[gameState.class].difficulty;
   document.getElementById('maxMistakes').innerHTML = gameState.playerMaxHP;
   document.getElementById('playerLevel').innerHTML = gameState.playerLevel;
@@ -690,7 +782,66 @@ function loadFinalBossSoal() {
   renderQuestion();
 }
 
-// ===== SHUFFLE =====
+// ===== DOKTER SELECTION =====
+function selectDokter(dokterType, element) {
+  // Remove previous selection
+  document.querySelectorAll('.dokter-option').forEach(el => {
+    el.style.background = '#1e293b';
+  });
+  
+  // Highlight selected
+  element.style.background = '#1e40af';
+  
+  // Store selection
+  gameState.selectedDokter = dokterType;
+  
+  // Show confirmation
+  const dokterNames = {
+    'klinik': 'Dokter Klinik',
+    'puskesmas': 'Dokter Puskesmas',
+    'igd': 'Dokter IGD',
+    'tiga_t': 'Dokter 3T'
+  };
+  
+  document.getElementById('selectedDokter').style.display = 'block';
+  document.getElementById('selectedDokterName').innerText = dokterNames[dokterType];
+}
+
+// ===== START GAME WITH PLAYER =====
+function startGameWithPlayer() {
+  const playerName = document.getElementById('playerName').value.trim();
+  const selectedDokter = gameState.selectedDokter;
+  
+  // Validation
+  if (!playerName) {
+    alert('❌ Silakan masukkan nama Anda terlebih dahulu!');
+    document.getElementById('playerName').focus();
+    return;
+  }
+  
+  if (!selectedDokter) {
+    alert('❌ Silakan pilih tipe dokter Anda!');
+    return;
+  }
+  
+  // Set player info
+  gameState.playerName = playerName;
+  const classInfo = CLASSES[selectedDokter];
+  gameState.class = selectedDokter;
+  gameState.playerMaxHP = classInfo.hp;
+  gameState.playerHP = classInfo.hp;
+  gameState.playerDamage = classInfo.damage;
+  gameState.playerDefense = classInfo.defense;
+  gameState.difficulty = classInfo.difficulty;
+  
+  // Hide registration, show game
+  document.getElementById('playerRegistration').style.display = 'none';
+  document.getElementById('gameScreen').style.display = 'block';
+  
+  // Initialize game
+  renderBossList();
+  loadBoss(0);
+}
 function shuffleArray(array) {
   const arr = [...array];
   for (let i = arr.length - 1; i > 0; i--) {
