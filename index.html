@@ -728,7 +728,14 @@ function loadBoss(bossIndex) {
   document.getElementById('playerLevel').innerHTML = gameState.playerLevel;
   
   // Show START button at top, hide questions
-  document.getElementById('startTryOutBtn').style.display = 'block';
+  console.log('🎮 loadBoss: Menampilkan tombol START...');
+  const btn = document.getElementById('startTryOutBtn');
+  if (btn) {
+    btn.style.display = 'block';
+    console.log('✅ Button START ditampilkan');
+  } else {
+    console.error('❌ Button START tidak ditemukan!');
+  }
   document.getElementById('startBossBtn').style.display = 'none';
   document.getElementById('questionContainer').innerHTML = '';
   
@@ -767,6 +774,13 @@ function loadFinalBoss() {
 
 // ===== START BOSS BATTLE =====
 function startBoss() {
+  // Check if soal is loaded
+  if (typeof allSoal === 'undefined' || !Array.isArray(allSoal) || allSoal.length === 0) {
+    alert('❌ Error: Soal belum ter-load!\n\nSilakan refresh halaman dan coba lagi.');
+    console.error('allSoal tidak tersedia:', allSoal);
+    return;
+  }
+  
   document.getElementById('startTryOutBtn').style.display = 'none';
   document.getElementById('startBossBtn').style.display = 'none';
   loadBossSoal();
@@ -863,11 +877,22 @@ function startGameWithPlayer() {
   gameState.playerDefense = classInfo.defense;
   gameState.difficulty = classInfo.difficulty;
   
+  // Initialize game state
+  gameState.currentBoss = 0;
+  gameState.bossDefeated = [];
+  gameState.isFinalBoss = false;
+  gameState.questionsAnswered = 0;
+  gameState.questionsCorrect = 0;
+  gameState.playerLevel = 1;
+  gameState.soal = [];
+  gameState.currentQuestion = 0;
+  
   // Hide registration, show game
   document.getElementById('playerRegistration').style.display = 'none';
   document.getElementById('gameScreen').style.display = 'block';
   
   // Initialize game
+  console.log('🎮 Game initialized! Starting boss 1...');
   renderBossList();
   loadBoss(0);
 }
