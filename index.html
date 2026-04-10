@@ -3,60 +3,288 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tryout PPDS PRO</title>
+<title>Tryout PPDS PRO - Fixed</title>
 
 <style>
-body{
-  font-family: Arial;
-  background:#0f172a;
-  color:#e2e8f0;
-  margin:0;
-  padding:20px;
+* {
+  box-sizing: border-box;
 }
 
-.container{
-  max-width:800px;
-  margin:auto;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #e2e8f0;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
 }
 
-.btn{
-  padding:12px 20px;
-  background:#7c3aed;
-  border:none;
-  border-radius:10px;
-  color:white;
-  cursor:pointer;
-  margin:5px;
+.container {
+  max-width: 900px;
+  margin: auto;
 }
 
-.qbox{
-  background:#1e293b;
-  padding:20px;
-  border-radius:12px;
-  margin-top:20px;
+h1 {
+  text-align: center;
+  color: #60a5fa;
+  margin-bottom: 10px;
 }
 
-.opt{
-  display:block;
-  padding:10px;
-  margin:8px 0;
-  background:#334155;
-  border-radius:8px;
-  cursor:pointer;
+.subtitle {
+  text-align: center;
+  color: #94a3b8;
+  margin-bottom: 30px;
 }
 
-.opt:hover{
-  background:#475569;
+.menu-section {
+  text-align: center;
+  padding: 40px 20px;
 }
 
-.nav{
-  margin-top:20px;
+.btn {
+  padding: 14px 30px;
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  margin: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
 }
 
-.timer{
-  float:right;
-  font-weight:bold;
-  color:#facc15;
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-small {
+  padding: 10px 20px;
+  font-size: 14px;
+  margin: 5px;
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #1e293b;
+  border-radius: 10px;
+}
+
+.progress {
+  font-size: 18px;
+  font-weight: bold;
+  color: #60a5fa;
+}
+
+.timer {
+  font-weight: bold;
+  font-size: 20px;
+  color: #facc15;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timer.danger {
+  color: #ff6b6b;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.qbox {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border-left: 4px solid #7c3aed;
+}
+
+.question-text {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #e2e8f0;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.opt {
+  display: block;
+  padding: 15px;
+  background: #334155;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  user-select: none;
+}
+
+.opt:hover {
+  background: #475569;
+  border-color: #7c3aed;
+}
+
+.opt.selected {
+  background: #7c3aed;
+  border-color: #a855f7;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+}
+
+.opt.correct {
+  background: #10b981;
+  border-color: #059669;
+}
+
+.opt.incorrect {
+  background: #ef4444;
+  border-color: #dc2626;
+}
+
+.nav {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.results-section {
+  text-align: center;
+  padding: 40px;
+  background: #1e293b;
+  border-radius: 12px;
+}
+
+.score-display {
+  font-size: 48px;
+  color: #10b981;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+.percentage {
+  font-size: 24px;
+  color: #60a5fa;
+  margin-bottom: 30px;
+}
+
+.review-section {
+  margin-top: 30px;
+}
+
+.review-item {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border-left: 4px solid #7c3aed;
+  text-align: left;
+}
+
+.review-item.correct {
+  border-left-color: #10b981;
+}
+
+.review-item.incorrect {
+  border-left-color: #ef4444;
+}
+
+.review-question {
+  font-weight: bold;
+  color: #60a5fa;
+  margin-bottom: 10px;
+}
+
+.review-answer {
+  margin: 8px 0;
+  padding: 8px;
+  background: #0f172a;
+  border-radius: 6px;
+}
+
+.answer-label {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.answer-value {
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+.answer-correct {
+  color: #10b981;
+}
+
+.answer-incorrect {
+  color: #ef4444;
+}
+
+.explanation {
+  margin-top: 10px;
+  padding: 10px;
+  background: #334155;
+  border-radius: 6px;
+  font-size: 14px;
+  border-left: 3px solid #facc15;
+}
+
+.hidden {
+  display: none;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.stat-box {
+  background: #334155;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 32px;
+  color: #60a5fa;
+  font-weight: bold;
+}
+
+.stat-label {
+  color: #94a3b8;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+  .quiz-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 
@@ -65,11 +293,13 @@ body{
 
 <div class="container">
 
-<h2>Tryout PPDS PRO</h2>
+<h1>🏥 Tryout PPDS Pediatri PRO</h1>
+<p class="subtitle">Persiapkan diri Anda menghadapi ujian PPDS Pediatri</p>
 
-<div id="menu">
-  <button class="btn" onclick="startQuiz(50)">Mulai 50 Soal</button>
-  <button class="btn" onclick="startQuiz(100)">Mulai 100 Soal</button>
+<div id="menu" class="menu-section">
+  <button class="btn" onclick="startQuiz(10)">📝 Mulai 10 Soal (10 menit)</button>
+  <button class="btn" onclick="startQuiz(50)">📚 Mulai 50 Soal (50 menit)</button>
+  <button class="btn" onclick="startQuiz(100)">🏆 Mulai 100 Soal (100 menit)</button>
 </div>
 
 <div id="quiz"></div>
@@ -77,166 +307,265 @@ body{
 </div>
 
 <script>
+// ================= DATA SOAL BUILT-IN =================
+const soalData = [
+  {
+    question: "Seorang anak berusia 5 tahun datang dengan gejala demam, batuk, dan kesulitan bernapas. Pemeriksaan fisik menunjukkan stridor inspirasi. Diagnosis yang paling mungkin adalah?",
+    options: ["Croup", "Epiglotitis", "Pneumonia", "Bronkitis"],
+    answer: "Croup",
+    explanation: "Croup ditandai dengan stridor inspirasi, batuk 'seal-like', suara serak, dan sering terjadi pada anak 3 bulan - 5 tahun. Virus parainfluenza adalah penyebab paling umum."
+  },
+  {
+    question: "Manakah dari berikut ini yang bukan merupakan tanda penyakit hemolitik pada bayi baru lahir (HBND)?",
+    options: ["Hiperbilirubinemia", "Anemia", "Hepatosplenomegali", "Polisitemia"],
+    answer: "Polisitemia",
+    explanation: "HBND ditandai dengan hiperbilirubinemia, anemia, dan hepatosplenomegali. Polisitemia (peningkatan RBC) bukan merupakan tanda HBND melainkan berhubungan dengan transfusi janin atau hipoksia."
+  },
+  {
+    question: "Anak usia 3 tahun mengalami diare akut berair tanpa darah selama 3 hari. Turgor kulit kembali dalam 2 detik. Status hidrasi anak ini adalah?",
+    options: ["Tanpa dehidrasi", "Dehidrasi ringan-sedang", "Dehidrasi berat", "Syok"],
+    answer: "Dehidrasi ringan-sedang",
+    explanation: "Turgor kulit kembali dalam 2 detik menunjukkan dehidrasi ringan-sedang (hilangnya 5-10% cairan tubuh). Turgor kulit normal kembali dalam 2 detik atau kurang, sedangkan kembali lebih dari 2 detik menunjukkan dehidrasi berat."
+  },
+  {
+    question: "Bayi perempuan berusia 2 minggu menunjukkan ikterus yang bertambah. Bilirubin total 15 mg/dL. Manakah terapi yang paling tepat?",
+    options: ["Observasi saja", "Fototerapi", "Transfusi tukar darah", "Terapi ursodesoksilat"],
+    answer: "Transfusi tukar darah",
+    explanation: "Pada bayi usia 2 minggu dengan bilirubin 15 mg/dL sudah termasuk kategori risiko tinggi sehingga memerlukan fototerapi intensif atau transfusi tukar darah. Kurva fototerappi dan kurva tukar darah harus dikonsultasikan."
+  },
+  {
+    question: "Seorang anak laki-laki berusia 4 tahun dibawa karena kesulitan berbicara dan kelainan postur tangan yang aneh. Ibunya melaporkan perkembangan normal hingga usia 2 tahun, kemudian terjadi regresi. Diagnosis yang paling mungkin?",
+    options: ["Cerebral palsy", "Sindrom Rett", "Autism spectrum disorder", "Intellectual disability"],
+    answer: "Sindrom Rett",
+    explanation: "Sindrom Rett ditandai dengan perkembangan normal 6-18 bulan diikuti regresi perkembangan, hilangnya kemampuan motorik, gangguan bahasa, dan gerakan tangan yang khas (hand stereotypy). Terjadi hanya pada anak perempuan."
+  },
+  {
+    question: "Anak berusia 6 bulan dengan berat badan 5 kg mengalami gastroenteritis dengan dehidrasi ringan-sedang. Berapa volume oralit yang harus diberikan dalam 4 jam?",
+    options: ["250 mL", "500 mL", "750 mL", "1000 mL"],
+    answer: "500 mL",
+    explanation: "Untuk dehidrasi ringan-sedang: 75 mL/kg dalam 4 jam. Volume = 5 kg × 75 mL = 375 mL (mendekati 500 mL). Pemberian peroral dengan oralit dalam jumlah sedikit-sedikit namun sering."
+  },
+  {
+    question: "Manakah yang bukan merupakan manifestasi klinis dari defisiensi vitamin A?",
+    options: ["Xeroftalmia", "Keratinisasi jaringan epitel", "Hiperkalemia", "Gangguan imunitas"],
+    answer: "Hiperkalemia",
+    explanation: "Manifestasi defisiensi vitamin A meliputi xeroftalmia (mata kering), keratinisasi epitel, dan gangguan imunitas. Hiperkalemia tidak berhubungan dengan defisiensi vitamin A, tetapi lebih berhubungan dengan gangguan ginjal atau asupan kalium berlebih."
+  },
+  {
+    question: "Seorang anak dengan diagnosis pneumonia komunitas memiliki saturasi oksigen 90% dan frekuensi napas 50 x/menit (umur 3 tahun). Klasifikasi WHO apa yang tepat?",
+    options: ["Pneumonia", "Pneumonia berat", "Pneumonia sangat berat", "Syok septik"],
+    answer: "Pneumonia berat",
+    explanation: "Pada anak usia 3 tahun, pneumonia berat ditandai dengan tachypnea (FR ≥40 x/menit), ditambah tanda-tanda klinis berat seperti SpO2 ≤90%, penggunaan otot bantu pernapasan, atau stridor saat istirahat."
+  },
+  {
+    question: "Bayi berusia 4 bulan dengan presentasi klinis: ubun-ubun besar yang menonjol, suara tangisan tinggi, dan refleks Moro yang hyperaktif. Diagnosis yang dicurigakan?",
+    options: ["Hydrocephalus", "Microcephalus", "Meningitis", "Seizure disorder"],
+    answer: "Hydrocephalus",
+    explanation: "Tanda-tanda hydrocephalus pada bayi: ubun-ubun besar menonjol, fontanel tegang, split sutures, suara tangisan yang tinggi (high-pitched cry), dan hiperrefleksia atau refleks Moro yang berlebihan."
+  },
+  {
+    question: "Anak usia 2 tahun mengalami kejang demam dengan durasi 8 menit. Ini adalah kejang demam tipe apa?",
+    options: ["Simple febrile convulsion", "Complex febrile convulsion", "Status epilepticus", "Epilepsi"],
+    answer: "Complex febrile convulsion",
+    explanation: "Kejang demam sederhana (simple) durasi <15 menit, umum (generalized), dalam 24 jam hanya 1x. Kejang demam kompleks (complex) memiliki ciri: durasi >15 menit, fokal, berulang >1x dalam 24 jam. Kasus ini durasi 8 menit tapi perlu info lebih lanjut untuk kompleks."
+  }
+];
+
+// ================= VARIABLES =================
 let soal = []
 let current = 0
 let score = 0
 let answers = []
 let timer = 0
 let interval
+let durations = {}
 
-// ================= LOAD BATCH =================
-async function loadBatch(n){
-  try{
-    const res = await fetch(`/batch${n}.json`)
-    
-    if(!res.ok){
-      throw new Error("Batch tidak ditemukan")
-    }
-
-    const data = await res.json()
-    console.log("Loaded batch:", n, data.length)
-    return data
-
-  }catch(e){
-    alert("Gagal load soal. Cek deploy Vercel")
-    console.error(e)
+// ================= START QUIZ =================
+function startQuiz(jumlah) {
+  document.getElementById("menu").style.display = "none"
+  
+  // Ambil soal sesuai jumlah yang diminta
+  soal = soalData.slice(0, Math.min(jumlah, soalData.length))
+  
+  if (soal.length === 0) {
+    alert("Soal tidak tersedia")
+    location.reload()
+    return
   }
-}
-
-// ================= START =================
-async function startQuiz(jumlah){
-
-  document.getElementById("menu").style.display="none"
-
-  const batch = Math.ceil(jumlah/50)
-
-  let data = await loadBatch(batch)
-
-  soal = data.slice(0, jumlah)
-
+  
   current = 0
   score = 0
   answers = new Array(soal.length)
-
+  durations = {}
+  
   startTimer(jumlah)
-
   render()
 }
 
 // ================= TIMER =================
-function startTimer(jumlah){
+function startTimer(jumlah) {
   timer = jumlah * 60
-
-  interval = setInterval(()=>{
+  
+  interval = setInterval(() => {
     timer--
-
-    let m = Math.floor(timer/60)
-    let s = timer%60
-
-    document.getElementById("timer").innerText =
-      `${m}:${s.toString().padStart(2,'0')}`
-
-    if(timer <= 0){
+    
+    let m = Math.floor(timer / 60)
+    let s = timer % 60
+    let display = `${m}:${s.toString().padStart(2, '0')}`
+    
+    let timerEl = document.getElementById("timer")
+    if (timerEl) {
+      timerEl.innerText = display
+      
+      // Danger mode saat <5 menit
+      if (timer < 300) {
+        timerEl.parentElement.classList.add("danger")
+      }
+    }
+    
+    if (timer <= 0) {
       clearInterval(interval)
       finish()
     }
-
-  },1000)
+  }, 1000)
 }
 
-// ================= RENDER =================
-function render(){
-
+// ================= RENDER QUESTION =================
+function render() {
   let q = soal[current]
-
+  
   let html = `
-  <div class="timer">⏱ <span id="timer">--:--</span></div>
+  <div class="quiz-header">
+    <div class="progress">Soal ${current + 1}/${soal.length}</div>
+    <div class="timer">⏱ <span id="timer">--:--</span></div>
+  </div>
+  
   <div class="qbox">
-    <b>Soal ${current+1}/${soal.length}</b>
-    <p>${q.question}</p>
+    <div class="question-text">${q.question}</div>
+    <div class="options-container">
   `
-
-  q.options.forEach(opt=>{
+  
+  q.options.forEach(opt => {
+    let selected = answers[current] === opt ? "selected" : ""
     html += `
-    <div class="opt" onclick="selectAnswer('${opt}')">
+    <div class="opt ${selected}" onclick="selectAnswer('${opt.replace(/'/g, "\\'")}')" title="Klik untuk memilih">
       ${opt}
     </div>`
   })
-
-  html += `</div>`
-
+  
   html += `
+    </div>
+  </div>
+  
   <div class="nav">
-    <button class="btn" onclick="prev()">Prev</button>
-    <button class="btn" onclick="next()">Next</button>
+    <button class="btn btn-small" onclick="prev()" ${current === 0 ? "disabled" : ""}>← Sebelumnya</button>
+    <button class="btn btn-small" onclick="next()">${current === soal.length - 1 ? "Selesai" : "Selanjutnya →"}</button>
   </div>
   `
-
+  
   document.getElementById("quiz").innerHTML = html
 }
 
-// ================= ANSWER =================
-function selectAnswer(val){
+// ================= SELECT ANSWER =================
+function selectAnswer(val) {
   answers[current] = val
+  render()
 }
 
-// ================= NAV =================
-function next(){
-  if(current < soal.length-1){
+// ================= NAVIGATION =================
+function next() {
+  if (current < soal.length - 1) {
     current++
     render()
-  }else{
+  } else {
     finish()
   }
 }
 
-function prev(){
-  if(current > 0){
+function prev() {
+  if (current > 0) {
     current--
     render()
   }
 }
 
-// ================= FINISH =================
-function finish(){
-
+// ================= FINISH QUIZ =================
+function finish() {
   clearInterval(interval)
-
+  
   score = 0
-
-  soal.forEach((q,i)=>{
-    if(answers[i] === q.answer){
+  soal.forEach((q, i) => {
+    if (answers[i] === q.answer) {
       score++
     }
   })
-
+  
+  let percentage = Math.round((score / soal.length) * 100)
+  
   let html = `
-  <h2>Hasil</h2>
-  <h3>Skor: ${score} / ${soal.length}</h3>
-  <button class="btn" onclick="review()">Review Jawaban</button>
+  <div class="results-section">
+    <h2>✅ Kuis Selesai!</h2>
+    <div class="score-display">${score} / ${soal.length}</div>
+    <div class="percentage">${percentage}%</div>
+    
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-number">${score}</div>
+        <div class="stat-label">Benar</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">${soal.length - score}</div>
+        <div class="stat-label">Salah</div>
+      </div>
+    </div>
+    
+    <button class="btn" onclick="review()">📖 Review Jawaban</button>
+    <button class="btn" onclick="location.reload()">🔄 Mulai Lagi</button>
+  </div>
   `
-
+  
   document.getElementById("quiz").innerHTML = html
 }
 
-// ================= REVIEW =================
-function review(){
-
-  let html = "<h2>Review</h2>"
-
-  soal.forEach((q,i)=>{
+// ================= REVIEW ANSWERS =================
+function review() {
+  let html = "<div class='review-section'><h2>📋 Review Jawaban</h2>"
+  
+  soal.forEach((q, i) => {
+    let userAnswer = answers[i] || "-"
+    let isCorrect = userAnswer === q.answer
+    let itemClass = isCorrect ? "correct" : "incorrect"
+    
     html += `
-    <div class="qbox">
-      <b>${i+1}. ${q.question}</b><br>
-      Jawaban kamu: ${answers[i] || "-"} <br>
-      Jawaban benar: ${q.answer}
+    <div class="review-item ${itemClass}">
+      <div class="review-question">${i + 1}. ${q.question}</div>
+      <div class="review-answer">
+        <div class="answer-label">Jawaban Anda:</div>
+        <div class="answer-value ${isCorrect ? 'answer-correct' : 'answer-incorrect'}">
+          ${userAnswer} ${isCorrect ? "✓" : "✗"}
+        </div>
+      </div>
+      ${!isCorrect ? `
+      <div class="review-answer">
+        <div class="answer-label">Jawaban Benar:</div>
+        <div class="answer-value answer-correct">${q.answer}</div>
+      </div>
+      ` : ""}
+      <div class="explanation">
+        <strong>Penjelasan:</strong> ${q.explanation}
+      </div>
     </div>
     `
   })
-
+  
+  html += `
+  <div style="text-align: center; margin-top: 30px;">
+    <button class="btn" onclick="location.reload()">🔄 Mulai Lagi</button>
+  </div>
+  </div>`
+  
   document.getElementById("quiz").innerHTML = html
 }
-
 </script>
 
 </body>
