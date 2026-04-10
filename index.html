@@ -559,7 +559,984 @@ h1 { text-align: center; color: #60a5fa; font-size: 2.5em; text-shadow: 0 0 20px
 
 </div>
 
-<script src="soal_format_lengkap.js"></script>
+<script>
+// ============= SOAL PPDS PEDIATRI LENGKAP (100 SOAL) =============
+// Format dengan soalNo, question, options (5 pilihan), answer, jawaban, dan analysis
+
+const allSoal = [
+  {
+    soalNo: "1",
+    question: "A 8 months old baby on high temperature for 10 hours followed by a 2 minutes tonic clonic generalized seizure, when he presented to you. You later discovered the baby had right ear secretion, also you observed no seizures occurred anymore. What was your diagnosis?",
+    options: ["A. Simple febrile seizure", "B. Partial epilepsy", "C. Complex febrile seizure", "D. Myoclonic epilepsy", "E. Unprovoke epilepsy"],
+    answer: "A",
+    jawaban: "A. Simple febrile seizure",
+    analysis: "Berdasarkan kriteria klinis, pasien ini mengalami kejang demam sederhana (KDS). Syarat KDS meliputi: usia antara 6 bulan hingga 5 tahun (pasien 8 bulan), kejang bersifat umum/general tonik-klonik, durasi kurang dari 15 menit (pasien 2 menit), dan tidak berulang dalam 24 jam (observasi tidak ada kejang lanjutan). Adanya sekret telinga kanan (kemungkinan Otitis Media Akut) merupakan fokus infeksi ekstra-kranial yang memicu demam."
+  },
+  {
+    soalNo: "2",
+    question: "A neonate born at 37 weeks of gestation with birth weight 2700 gr. Parents brought the neonate for routine visit at 1 month of age. What do you expect for the minimum current body weight?",
+    options: ["A. 3000-3100 gr", "B. 3350-3400 gr", "C. 3250-3300 gr", "D. 3500-3600 gr", "E. 3150-3200 gr"],
+    answer: "D",
+    jawaban: "D. 3500-3600 gr",
+    analysis: "Neonatus aterm normal umumnya akan mengalami penurunan berat badan fisiologis di minggu pertama (hingga 10%) dan kembali ke berat lahir pada usia 10-14 hari. Selanjutnya, rekomendasi pertumbuhan (seperti panduan grafik WHO atau IDAI) menetapkan KBM untuk bayi di bulan pertama adalah sekitar 800 gram. Jika berat lahir 2700 gram, penambahan minimal yang diharapkan agar kurva pertumbuhan tetap berada di jalur hijau adalah 2700 gram + 800 gram = 3500 gram."
+  },
+  {
+    soalNo: "3",
+    question: "You manage a neonate with patent ductus arteriosus and expect the closure soon with non invasive procedure. What do you choose to accelerate the closure of the anomaly?",
+    options: ["A. Ibuprofen", "B. Dexamethasone", "C. Epinefrin", "D. Diphenhidramin", "E. Morphine"],
+    answer: "A",
+    jawaban: "A. Ibuprofen",
+    analysis: "Patent Ductus Arteriosus (PDA) dipertahankan tetap terbuka oleh prostaglandin E2 (PGE2) dan prostasiklin. Terapi lini pertama untuk penutupan PDA secara farmakologis (non-invasif) pada neonatus adalah dengan memberikan inhibitor siklooksigenase (COX inhibitor) yang berfungsi menghambat sintesis prostaglandin. Obat pilihan utamanya adalah Indometasin atau Ibuprofen."
+  },
+  {
+    soalNo: "4",
+    question: "You suspect a congenital heart anomaly patent ductus arteriosus when assessing a newborn infant. You associated your conclusion with the gestational age of the infant at?",
+    options: ["A. 35-37 weeks", "B. <32 weeks", "C. >40 weeks", "D. 32-34 weeks", "E. 38-40 week"],
+    answer: "B",
+    jawaban: "B. <32 weeks",
+    analysis: "Insiden PDA berbanding terbalik dengan usia kehamilan. Semakin prematur bayi (terutama di bawah 32 minggu), semakin tinggi risiko patensi duktus ini menetap. Hal ini disebabkan oleh otot polos pada dinding duktus bayi prematur yang kurang responsif terhadap peningkatan oksigen pascasalin dan lebih sensitif terhadap prostaglandin yang bersirkulasi."
+  },
+  {
+    soalNo: "5",
+    question: "A posyandu provider reporting to you a boy aged 4 years who has WFA <-2 SD, HFA <-3 SD, WFH >2 SD. What is your conclusion regarding the nutritional status of the boy?",
+    options: ["A. Underweight, severly stunted, wasted", "B. Normoweight, severly stunted, overweight", "C. Underweight, severly stunted, obese", "D. Normoweight, severly stunted, obese", "E. Underweight, severly stunted, overweight"],
+    answer: "E",
+    jawaban: "E. Underweight, severly stunted, overweight",
+    analysis: "Mari kita uraikan indeks antropometri berdasarkan standar WHO: WFA (Weight for Age / BB/U) <-2 SD: Gizi kurang (Underweight). HFA (Height for Age / TB/U) <-3 SD: Sangat pendek (Severely stunted). WFH (Weight for Height / BB/TB) >2 SD: Gizi lebih (Overweight). Batas obesitas pada kurva WHO adalah >3 SD. Kombinasi ini sangat mungkin terjadi pada anak yang sangat pendek (stunting berat), sehingga secara proporsi BB per TB-nya terlihat besar/overweight."
+  },
+  {
+    soalNo: "6",
+    question: "Birth weight can be associated with iron deficiency before age 2 years. Which of the birthweight below carry potential risk the most for iron deficiency anemia?",
+    options: ["A. Birthweight 3000-3500g", "B. Birthweight 2500-3000g", "C. Birthweight 3500-4000g", "D. Birthweight <2500g", "E. Birthweight >4000g"],
+    answer: "D",
+    jawaban: "D. Birthweight <2500g",
+    analysis: "Bayi dengan berat lahir rendah (BBLR, <2500 gram) atau lahir prematur memiliki risiko sangat tinggi mengalami anemia defisiensi besi (ADB). Akumulasi cadangan besi janin sebagian besar (sekitar 80%) terjadi pada trimester ketiga kehamilan. Bayi BBLR memiliki cadangan besi yang sedikit sejak lahir, dikombinasikan dengan laju pertumbuhan kejar (catch-up growth) yang cepat, sehingga cadangan besinya akan habis jauh lebih awal (sekitar usia 2-3 bulan) dibandingkan bayi aterm (4-6 bulan)."
+  },
+  {
+    soalNo: "7",
+    question: "You meet a 3 years old boy with body weight below -2 SD and concern of his malnutrition status. You are aware this condition is associated with imbalance of nutritional:",
+    options: ["A. Processing and digestion", "B. Needs and processing", "C. Needs and intake", "D. Digestion and comsumption", "E. Intake and processing"],
+    answer: "C",
+    jawaban: "C. Needs and intake",
+    analysis: "Konsep dasar malnutrisi, terlepas dari etiologi spesifiknya, berakar pada ketidakseimbangan antara kebutuhan nutrisi (needs/requirements) tubuh yang dibutuhkan untuk metabolisme basal, pertumbuhan, dan pemulihan, dengan asupan nutrisi (intake) yang masuk."
+  },
+  {
+    soalNo: "8",
+    question: "A 12 years-old female came to ER with soporo-comatous of consciousness. We found tachypneu and deep of breathing. Her random blood glucose is 600 mg/dL. What is the most likely diagnosis?",
+    options: ["A. Metabolic syndrome", "B. Diabetic ketoacidosis", "C. Diabetes Mellitus", "D. Pneumonia", "E. Hyperglicemic stress"],
+    answer: "B",
+    jawaban: "B. Diabetic ketoacidosis",
+    analysis: "Trias klasik yang membedakan penyulit gawat darurat endokrin ini adalah hiperglikemia yang parah (GDS 600 mg/dL), penurunan kesadaran (soporo-comatous akibat hiperosmolaritas dan asidosis otak), serta pernapasan cepat dan dalam (Kussmaul breathing). Pernapasan Kussmaul merupakan bentuk kompensasi pernapasan (hiperventilasi) untuk membuang karbondioksida dalam merespons asidosis metabolik sistemik."
+  },
+  {
+    soalNo: "9",
+    question: "A mother asked you to consult weaning preparation as her baby almost reaches a-6-months of exclusive breastfeeding. What do you consider as the most important concept in weaning to tell?",
+    options: ["A. Energy density should exceed of breastmilk", "B. Begin exactly at age 6 months, no more or less", "C. Breastmilk can be stop once weaning starts", "D. Introduce various food at a time to enrich nutrition", "E. Encourage bottle rather than cup to increased satiety"],
+    answer: "A",
+    jawaban: "A. Energy density should exceed of breastmilk",
+    analysis: "Pada usia 6 bulan, ASI sudah tidak mampu lagi memenuhi 100% kebutuhan energi harian makronutrien dan mikronutrien anak (meninggalkan energy gap dan iron gap). Oleh karena itu, prinsip utama Makanan Pendamping ASI (MPASI) yang adekuat adalah kepadatannya harus mencukupi untuk menutup gap tersebut. Kepadatan energi dari makanan padat jelas harus lebih tinggi atau melampaui liquid density dari ASI agar kebutuhan tumbuh kembangnya dapat terpenuhi."
+  },
+  {
+    soalNo: "10",
+    question: "Neurological examination including testing cognition which provides helpful information about thinking, memory and your emotional state. You may asked patient to?",
+    options: ["A. Stimulating the sole of your foot", "B. Performing fine motor skills", "C. Movement to command", "D. Testing movements of your face, eyes and tongue", "E. Answer questions about the date, time and locations"],
+    answer: "E",
+    jawaban: "E. Answer questions about the date, time and locations",
+    analysis: "Pemeriksaan status kognitif dan mental (seperti Mini-Mental State Examination / MMSE atau penilaian orientasi dasar) berfokus pada fungsi kortikal luhur. Menanyakan informasi mengenai tanggal, waktu, dan tempat bertujuan untuk mengevaluasi domain orientasi (terhadap orang, ruang, dan waktu) dan memori jangka pendek, yang merupakan fondasi dasar dari fungsi kognisi."
+  },
+  {
+    soalNo: "11",
+    question: "A criteria diagnosis for certain neurological disease needs cerebrospinal fluid pleocystosis be exist. What is the term applied for pleocytosis?",
+    options: ["A. Different cells found in the CSF sample", "B. Large number of cells from different type found in the CSF sample", "C. Large amount of cells found in the CSF sample", "D. Small amount of cells found in the CSF sample", "E. Not cell found in the CSF sample"],
+    answer: "C",
+    jawaban: "C. Large amount of cells found in the CSF sample",
+    analysis: "Pleositosis secara harfiah berarti peningkatan abnormal jumlah sel (biasanya sel darah putih / leukosit) di dalam cairan serebrospinal (Likuivor Serebrospinal / LCS). Ini merupakan indikator kunci adanya proses inflamasi atau infeksi pada sistem saraf pusat, seperti pada meningitis atau ensefalitis."
+  },
+  {
+    soalNo: "12",
+    question: "Mother brought her 3 years old boy who showed repetitive movement and concern he has seizure. You check the boy and decide it was rather an involuntary movement. What is differential between seizure and involuntary movement?",
+    options: ["A. An involuntary movement is started with jerking movements of the arms and legs.", "B. Patient lose consciousness when on involuntary movement", "C. Seizure always accompanied by fever in young child", "D. An involuntary movement is characterized by eyes moving upward", "E. Patient stays comscious while gctting an involuntary movement"],
+    answer: "E",
+    jawaban: "E. Patient stays conscious while getting an involuntary movement",
+    analysis: "Tantangan utama di IGD seringkali adalah membedakan kejang sesungguhnya dengan movement disorder (seperti tics, korea, atau mioklonus non-epileptik). Ciri pembeda utamanya adalah tingkat kesadaran. Pada involuntary movement, anak umumnya tetap sadar penuh, dapat dialihkan perhatiannya, dan gerakannya terkadang bisa dihentikan sementara dengan menahan ekstremitas tersebut. Sebaliknya, kejang umum hampir selalu disertai penurunan atau perubahan kesadaran."
+  },
+  {
+    soalNo: "13",
+    question: "A 8 months old baby presented to you 2x he experienced a tonic clonic generalized seizures. Following high temperature for a hours. You also discovered right ear secretion. What is your first management?",
+    options: ["A. Fluid resuscitation", "B. High flow oxygen", "C. Diazepam", "D. Antibiotics", "E. Antipyretic"],
+    answer: "E",
+    jawaban: "E. Antipyretic",
+    analysis: "Kasus ini mendeskripsikan Kejang Demam Kompleks (KDK) karena kejang berulang (2x) dalam satu episode demam. Jika pasien datang dalam keadaan sedang kejang aktif, lini pertamanya tentu ABC, oksigenasi, dan farmakoterapi anti-kejang (Diazepam IV/rektal). Namun, soal menyebutkan 'he experienced... following high temperature', yang mengindikasikan pasien datang post-iktal atau sudah tidak kejang. Prioritas selanjutnya adalah menurunkan suhu tubuh (Antipiretik) untuk mencegah bangkitan susulan, baru disusul antibiotik untuk mengeradikasi fokus infeksi di telinga (OMA)."
+  },
+  {
+    soalNo: "14",
+    question: "A neonates born from HIV positive mother. She born vigorously and drink formula. Mother has been on ART for 1 year. Will you give BCG vaccination to this neonate?",
+    options: ["A. Yes, as the mother has been on ART", "B. No, it can leas to BCG disseminated infection", "C. No, it can lead to tuberculosis disseminated infection", "D. Yes, it is safe as the baby is born vigorously", "E. No, it is contraindicated"],
+    answer: "E",
+    jawaban: "E. No, it is contraindicated",
+    analysis: "Berdasarkan rekomendasi IDAI dan WHO, vaksin BCG (vaksin hidup yang dilemahkan) dikontraindikasikan secara absolut pada bayi yang lahir dari ibu HIV positif sampai status infeksi HIV pada bayi tersebut berhasil disingkirkan secara pasti (virologis negatif). Pemberian BCG pada bayi immunocompromised berisiko memicu disseminated BCG disease (penyakit BCG diseminata) yang fatal."
+  },
+  {
+    soalNo: "15",
+    question: "A 7-year old boy experienced generalized seizure for 2 days, thrice daily, lasting for 2-4 minutes, where he fully concious after attacks. He was with remarkable good condition despite the seizure. What is the possible diagnosis?",
+    options: ["A. Status epilepticus", "B. Meningitis", "C. Encephalitis", "D. Epilepsy", "E. Complex febrile seizures"],
+    answer: "D",
+    jawaban: "D. Epilepsy",
+    analysis: "Anak mengalami bangkitan kejang umum tanpa provokasi (tidak disebutkan ada demam) yang berulang (3x sehari selama 2 hari). Pasien juga sepenuhnya sadar dan baik pasca-serangan (menyingkirkan meningitis/ensefalitis yang biasanya toksik/letargis). Kejang tanpa provokasi yang berulang dengan jarak >24 jam memenuhi kriteria klinis epilepsi."
+  },
+  {
+    soalNo: "16",
+    question: "New Ballard assessment of the baby at 29 weeks old gestational age classified the baby as?",
+    options: ["A. Extremely preterm baby", "B. Near term baby", "C. Moderate preterm", "D. Very preterm baby", "E. Postterm baby"],
+    answer: "D",
+    jawaban: "D. Very preterm baby",
+    analysis: "Mengacu pada klasifikasi usia gestasi WHO: Extremely preterm: < 28 minggu; Very preterm: 28 minggu hingga < 32 minggu; Moderate to late preterm: 32 minggu hingga < 37 minggu. Karena bayi berusia 29 minggu, ia masuk dalam kategori Very Preterm."
+  },
+  {
+    soalNo: "17",
+    question: "At one minute of age resuscitation, baby experienced central cyanosis, gasping respiration, heart rate of 70, floopy tone and facial grimacing but no crying. Based on this finding, the infant APGAR score is?",
+    options: ["A. 4", "B. 3", "C. 7", "D. 6", "E. 8"],
+    answer: "B",
+    jawaban: "B. 3",
+    analysis: "Mari kita hitung parameter APGAR-nya: Appearance (Warna kulit): Sianosis sentral = 0; Pulse (Nadi): HR 70 (< 100x/menit) = 1; Grimace (Refleks): Menyeringai/grimace tapi tidak menangis = 1; Activity (Tonus otot): Floppy (lunglai/lemah) = 0; Respiration (Pernapasan): Gasping (megap-megap/tidak teratur) = 1. Total Skor: 0 + 1 + 1 + 0 + 1 = 3. Indikasi untuk tindakan resusitasi lanjutan."
+  },
+  {
+    soalNo: "18",
+    question: "A young mother brings her 5 days old neonate and worrying on unplugged umbilical stump. You checked the clamp was clean, dry, and not smelly. You decided to give conclusion:",
+    options: ["A. That is beyond normal, need immediate antibiotics", "B. That need blood test, as the stump normally has discarded", "C. That is probably familial", "D. There is possible umbilical infection", "E. That is normal, the stump discarded on 7-11 days remained"],
+    answer: "E",
+    jawaban: "E. That is normal, the stump discarded on 7-11 days remained",
+    analysis: "Puput pusar (lepasnya sisa tali pusat) secara fisiologis terjadi antara hari ke-5 hingga ke-15 pasca kelahiran. Jika pada usia 5 hari tunggul tali pusat masih menempel, namun kondisinya bersih, kering, dan tidak berbau (tidak ada tanda omfalitis), ini adalah temuan klinis yang sangat normal. Edukasi reassurance sangat penting di sini."
+  },
+  {
+    soalNo: "19",
+    question: "A premature male baby was born at the hospital, how do you manage the umbilical stump?",
+    options: ["A. Povidone iodine", "B. Dry care", "C. 70% Alcohol", "D. Topical antiseptic", "E. Topical antibiotic"],
+    answer: "B",
+    jawaban: "B. Dry care",
+    analysis: "Rekomendasi terkini WHO dan IDAI untuk perawatan tali pusat yang lahir di fasilitas kesehatan bersalin (lingkungan yang higienis) adalah perawatan tali pusat bersih dan kering (Dry care). Penggunaan alkohol 70% atau povidone iodine sudah mulai ditinggalkan karena dapat memperlambat proses puput pusar dengan membunuh flora normal yang justru membantu pemisahan jaringan mati tersebut."
+  },
+  {
+    soalNo: "20",
+    question: "What is the respiratory pattern on neonate?",
+    options: ["A. Pattern of respiration begins later in infancy", "B. Expiration is the same length with inspiration", "C. No clear pattern if inspiration", "D. Expiration is shorter than inspiration", "E. Expiration is longer than inspiration"],
+    answer: "E",
+    jawaban: "E. Expiration is longer than inspiration",
+    analysis: "Secara fisiologis, fase ekspirasi pada siklus pernapasan memakan waktu lebih lama daripada fase inspirasi. Rasio normal Inspirasi terhadap Ekspirasi (I:E ratio) pada neonatus dan anak berkisar antara 1:1,5 hingga 1:2. Pada neonatus (terutama prematur), sering juga dijumpai pola pernapasan periodik (jeda napas singkat < 15 detik), yang masih dianggap normal."
+  },
+  {
+    soalNo: "21",
+    question: "A 2 years old boy comes with his mother with the main complain of high grade fever for 4 days. Mothers also complain of some red rashes appear in his face since yesterday that spread to his neck and chest. The mother said that his neighbor was suffered with the same complaint, and now hospitalized due to dyspnea. What is most likely diagnosis of this case?",
+    options: ["A. Scarlet fever", "B. Rubella", "C. Exanthema subitem", "D. Measles", "E. Varicella"],
+    answer: "D",
+    jawaban: "D. Measles",
+    analysis: "Gejala klasik campak terdiri dari demam tinggi yang diikuti dengan munculnya ruam makulopapular. Karakteristik khas ruam campak adalah penyebarannya yang bersifat sentrifugal atau cephalocaudal (dimulai dari wajah/belakang telinga, lalu menyebar ke leher, dada, dan seluruh tubuh). Pneumonia adalah komplikasi tersering dan penyebab mortalitas tertinggi pada infeksi campak."
+  },
+  {
+    soalNo: "22",
+    question: "You received a medical consult of a pediatric patient come with red urine. Urine test positive but no eritrocytes detected in high power field. What was the possible cause of the red urine?",
+    options: ["A. Iron sorbitol", "B. Melanin", "C. Myoglobin", "D. Phorphyrin", "E. Methemoglobin"],
+    answer: "C",
+    jawaban: "C. Myoglobin",
+    analysis: "Jika hasil dipstick urin positif untuk 'darah' (blood) namun pada evaluasi mikroskopik tidak ditemukan sel darah merah (eritrosit) yang utuh, ini menunjukkan adanya pigmen heme bebas di dalam urin. Penyebab utamanya adalah hemoglobin bebas (akibat hemolisis intravaskular) atau mioglobin (akibat kerusakan jaringan otot masif / rhabdomyolisis)."
+  },
+  {
+    soalNo: "23",
+    question: "A midwife refers to you with red urine and swelling both legs. From physical examination you found hypertension. What is your first differential diagnosis of this condition?",
+    options: ["A. Urinary track infection", "B. Urether kinking", "C. Glomerulonephritis", "D. Nephrotic syndrome", "E. Bladder stone"],
+    answer: "C",
+    jawaban: "C. Glomerulonephritis",
+    analysis: "Trias klinis berupa hematuria (kencing merah), edema (bengkak pada kaki/palpebra), dan hipertensi adalah presentasi klasik dari Sindrom Nefritik Akut (SNA). Pada anak, penyebab terseringnya adalah Acute Post-Streptococcal Glomerulonephritis (GNAPS). Berbeda dengan Sindrom Nefrotik yang ditandai dengan edema anasarka masif namun jarang disertai gross hematuria dan hipertensi yang mencolok."
+  },
+  {
+    soalNo: "24",
+    question: "A 12 years old girl was presented with chest tightness. Further evaluation confirms her having rheumatic heart disease. Which of the heart valve is most affected by this disease?",
+    options: ["A. Semilunare", "B. Mitral", "C. Aortae", "D. Pulmonale", "E. Tricuspid"],
+    answer: "B",
+    jawaban: "B. Mitral",
+    analysis: "Penyakit Jantung Rematik (Rheumatic Heart Disease/RHD) akibat demam rematik akut utamanya merusak katup-katup di jantung sebelah kiri. Katup mitral adalah katup yang paling sering dan paling parah terdampak (menyebabkan regurgitasi mitral pada fase awal, dan stenosis mitral pada kronisitas), disusul oleh katup aorta di urutan kedua."
+  },
+  {
+    soalNo: "25",
+    question: "An 8-years-old girl was brought due to palpitation. Further evaluation revealed wide and fixed split 2nd heart sound and ejection systolic murmur best heard on 2nd intercostal space left parasternal ine. ECG showed right ventricular hypertrophic. Chest X-ray showed Cardio thoraxic ratio 0.8 and upward heart apex. The most likely diagnosis is?",
+    options: ["A. Aortic stenosis", "B. Pulmonary stcnosis", "C. Tctralogy of Fallot", "D. Atrial Septal Defect", "E. Persistent foramen ovale"],
+    answer: "D",
+    jawaban: "D. Atrial Septal Defect",
+    analysis: "Temuan auskultasi berupa wide and fixed split S2 (bunyi jantung kedua terbelah lebar dan menetap saat inspirasi maupun ekspirasi) adalah tanda patognomonis untuk Atrial Septal Defect (ASD). Bising ejeksi sistolik di area pulmonal terjadi karena peningkatan aliran darah yang melewati katup pulmonal akibat beban volume dari atrium kiri ke kanan. Beban volume ini juga menjelaskan temuan RVH pada EKG dan kardiomegali pada Roentgen."
+  },
+  {
+    soalNo: "26",
+    question: "A girl, 8 years old come with polyuria, polyphagia and polydipsia. Her parents had no history of diabetes, her blood glucose was 450gr/dl. Her HbA1C was 15%. Her C-Peptide was 0.1 (low). What is the diagnosis of the case?",
+    options: ["A. Monogenic Diabetes Mellitus", "B. Steroid-induced Diabetes Mellitus", "C. Type 2 Diabetes Mellitus", "D. Type 1 Diabetes Mellitus", "E. Neonatal Diabetes Mellitus"],
+    answer: "D",
+    jawaban: "D. Type 1 Diabetes Mellitus",
+    analysis: "Pasien datang dengan trias klasik diabetes (poliuria, polifagia, polidipsia) dan hiperglikemia berat. Kunci dari diagnosis ini adalah kadar C-Peptide yang sangat rendah (0.1). C-Peptide adalah produk sampingan dari sintesis insulin endogen; kadar yang rendah menunjukkan kerusakan sel beta pankreas secara absolut (autoimun), yang menjadi ciri khas utama Diabetes Mellitus Tipe 1."
+  },
+  {
+    soalNo: "27",
+    question: "A 8 year old girl was brought to you as she experienced urticaria hence, you prescribed an antihistamine. What is the correct statement?",
+    options: ["A. AH inhibit bind specific IgE", "B. AH competitively bind H receptor", "C. AH stop histamin released by mast cell", "D. AH stop histamin released by dendrit cell", "E. AH inhibit histamin bind to allergen"],
+    answer: "B",
+    jawaban: "B. AH competitively bind H receptor",
+    analysis: "Antihistamin (seperti Cetirizine atau CTM) bekerja bukan dengan cara menghentikan pelepasan histamin dari sel mast, melainkan dengan cara berikatan secara kompetitif pada reseptor histamin (H1-receptor) di sel target (seperti di pembuluh darah atau saraf tepi). Hal ini mencegah histamin yang sudah telanjur terlepas dari kemampuannya memicu gejala alergi (urtikaria/gatal)."
+  },
+  {
+    soalNo: "28",
+    question: "A 6 years old boy was brought to the ER because due to all day and night repetitive cough. Father reported the girl choked on a pin 2 days before. She shown an x-ray from the previous hospital revealing a pin in the left bronchus. Laboratory test was normal. What was your next plan to proceed?",
+    options: ["A. Perform abdominal thrusts", "B. Perform Heimlich manouver", "C. Perform back blow", "D. Perform bronchoscopy", "E. Perform jaw thrust"],
+    answer: "D",
+    jawaban: "D. Perform bronchoscopy",
+    analysis: "Pasien tersedak peniti 2 hari yang lalu dan saat ini posisinya sudah terkonfirmasi melalui X-ray berada di bronkus kiri (saluran napas bawah). Manuver Heimlich, back blow, atau abdominal thrust hanya diindikasikan untuk sumbatan jalan napas atas yang akut dan mengancam nyawa darurat. Untuk benda asing yang sudah bersarang di bronkus, tindakan ekstraksi definitif dan paling aman adalah dengan prosedur bronkoskopi."
+  },
+  {
+    soalNo: "29",
+    question: "Parents brought their yellowish neonates. You check the neonate to have jaundice at krammer 4. What is your pre assumption for the indirect bilirubin level?",
+    options: ["A. 2-4", "B. 14-16", "C. 5-7", "D. 8-10", "E. 11-13"],
+    answer: "E",
+    jawaban: "E. 11-13",
+    analysis: "Aturan Kramer digunakan untuk memperkirakan kadar bilirubin serum total secara visual: Kramer I (Kepala - leher): ~5 mg/dL; Kramer II (Dada - pusar): ~9 mg/dL; Kramer III (Pusar - paha): ~11 mg/dL; Kramer IV (Lengan dan tungkai bawah siku/lutut): ~12-15 mg/dL; Kramer V (Telapak tangan dan kaki): >15 mg/dL."
+  },
+  {
+    soalNo: "30",
+    question: "You are on duty with an immediate unexpected labor reported to you. You expect the baby born vigorously. As such what are the range of the baby heart rate you expected after the baby is stabilized?",
+    options: ["A. 91-100", "B. 111-120", "C. 71-80", "D. 81-90", "E. 60-70"],
+    answer: "B",
+    jawaban: "B. 111-120",
+    analysis: "Bayi yang lahir bugar (vigorous) dan sudah stabil memiliki denyut jantung fisiologis normal (resting heart rate) yang berkisar antara 110 hingga 160 kali per menit. Laju napas normalnya adalah 40-60 kali per menit."
+  },
+  {
+    soalNo: "31",
+    question: "You heard a medium pitched high grade continuous murmur heard best at the pulmonic position, with a harsh machine like quality than often radiates to the left clavicle. Which of the congenital heart anomaly represented by your finding?",
+    options: ["A. Coarctatio of the aorta", "B. Patent ductus arteriosus", "C. Transposition of great arteries", "D. Atrial septal defect", "E. Ventricular septal defect"],
+    answer: "B",
+    jawaban: "B. Patent ductus arteriosus",
+    analysis: "Deskripsi continuous, harsh machine-like murmur (bising mesin yang terdengar terus-menerus sepanjang fase sistolik dan diastolik) yang paling jelas terdengar di area pulmonal (sela iga ke-2 sternum kiri) menjalar ke klavikula kiri adalah tanda patognomonis untuk Patent Ductus Arteriosus (PDA). Bising ini terjadi karena adanya aliran darah bertekanan tinggi dari aorta yang masuk secara kontinu ke arteri pulmonalis melewati duktus yang gagal menutup pascasalin."
+  },
+  {
+    soalNo: "32",
+    question: "A boy, 1 year old, the weight for age z-score was at +1 SD and BMI for age was at >+2 SD. According to WHO growth chart 2006, what is your advice to his parents?",
+    options: ["A. Give all food in the form of low glycemic index", "B. Continue recent diet patterns and monitor weight and height every 3 months", "C. Increase the amount of food intake", "D. Increase the physical activity", "E. Reduce the amount of food intake"],
+    answer: "D",
+    jawaban: "D. Increase the physical activity",
+    analysis: "Berdasarkan kurva WHO, BMI/U >+2 SD mengindikasikan status gizi Overweight (Gizi Lebih). Pada batita (1 tahun), intervensi utamanya bukan diet restriktif yang ekstrem karena dapat mengganggu pertumbuhan otak dan linear. Edukasi ditekankan pada modifikasi diet (seperti menghindari minuman berpemanis/kalori kosong, mengatur porsi/intake) dan secara aktif meningkatkan aktivitas fisik harian (seperti active play)."
+  },
+  {
+    soalNo: "33",
+    question: "A mother brought her 3 months old baby as she has check specific IgE for the baby which showed positive for milk allergy. Which of the following allergy manifestation will be most possible in this infant?",
+    options: ["A. Eczema", "B. Generalized urticaria", "C. Anaphylaxis", "D. Rhinitis allergy", "E. Asthma"],
+    answer: "A",
+    jawaban: "A. Eczema",
+    analysis: "Dalam konsep Allergic March (Perjalanan Alergi), manifestasi alergi sangat bergantung pada usia. Pada masa bayi (infant), target organ utama akibat alergi protein susu sapi (CMPA) adalah saluran cerna dan kulit. Manifestasi kulit yang paling dini dan sering muncul adalah eksim atau dermatitis atopik. Alergi respiratorik (rinitis, asma) biasanya baru mendominasi di atas usia balita hingga anak sekolah."
+  },
+  {
+    soalNo: "34",
+    question: "Ministry of health recommendation public health program to reduce possible transmission of disease from mother to her child. Which among below the most common cross placenta transfer of maternal infection for her baby?",
+    options: ["A. Syphilis", "B. Covid", "C. HIV", "D. Tuberculosis", "E. Toxoplasmosis"],
+    answer: "A",
+    jawaban: "A. Syphilis",
+    analysis: "Infeksi Sifilis disebabkan oleh Treponema pallidum yang sangat mudah menembus plasenta dan dapat menular ke janin pada semua stadium kehamilan. Transmisi HIV tertinggi terjadi pada saat persalinan (intrapartum) akibat paparan darah/sekresi jalan lahir, dan pascasalin (melalui ASI), bukan melalui rute transplasental. Ini mendasari pentingnya skrining Triple Eliminasi (Sifilis, HIV, Hep B) pada ibu hamil."
+  },
+  {
+    soalNo: "35",
+    question: "A boy was brought to a hospital by his mother on November 23, 2021 for having vaccination. He was born March 18, 2020. Examination of the child revealed no abnormalities. From the history, he received complete vaccination of hepatitis B 0, BCG, DPT, HIB, OPV, IPV, PCV, MR, rotavirus, influenza vaccine and no adverse events following immunization occurred. What is the live booster vaccine indicated to be administered for the child on this visit?",
+    options: ["A. PCV", "B. Influenza", "C. DPT", "D. MR", "E. Rotavirus"],
+    answer: "D",
+    jawaban: "D. MR",
+    analysis: "Usia anak saat kunjungan adalah sekitar 20 bulan (Maret 2020 - November 2021). Jadwal imunisasi booster (ulangan) pada rentang usia 18-24 bulan meliputi DPT-HB-Hib dan MR (Measles-Rubella). Clue utama di soal adalah 'live booster vaccine' (vaksin hidup). Vaksin DPT adalah vaksin inactivated/toxoid, sedangkan MR adalah vaksin virus hidup yang dilemahkan (live attenuated)."
+  },
+  {
+    soalNo: "36",
+    question: "Resuscitation of the neonate reduce neonatal mortality rate. What is the most important and effective action in neonatal resuscitation?",
+    options: ["A. Oxygenation of systemic organ", "B. Ventilate the brain", "C. Maintain pulmonary arteriole constriction", "D. Ventilate the lungs", "E. Oxygenation of venous systemic blood"],
+    answer: "D",
+    jawaban: "D. Ventilate the lungs",
+    analysis: "Sesuai pedoman resusitasi neonatus global (seperti NRP dari AAP/AHA), langkah paling krusial dan efektif untuk menyelamatkan bayi baru lahir yang asfiksia adalah memberikan ventilasi paru yang adekuat (seperti dengan VTP). Kegagalan pernapasan adalah etiologi utama gangguan neonatus transisional, bukan aritmia primer seperti pada dewasa."
+  },
+  {
+    soalNo: "37",
+    question: "A 3 years old girl was brought to the outpatient clinic because of productive cough for 3 weeks. She has no other complaints. Father was diagnosed with TB with acid bacilli smear (++). The girl weighing 12 kg and all systems were in normal findings. Tuberculin skin test results 13 mm of induration. What is the management for the child?",
+    options: ["A. FDC 2HRZ/8HR", "B. FDC 2HRZ/4HR", "C. FDC 2HRZE/12HR", "D. FDC 2HRZE/8HR", "E. FDC 2HRZE/10HR"],
+    answer: "B",
+    jawaban: "B. FDC 2HRZ/4HR",
+    analysis: "Pasien memenuhi kriteria TB paru anak aktif karena memiliki skor TB yang tinggi: batuk persisten >2 minggu (1 poin), kontak erat dengan BTA positif (3 poin), dan uji tuberkulin / mantoux positif >10mm (3 poin). Total skor = 7 (diagnosis TB tegak). Paduan OAT untuk TB Paru anak tanpa komplikasi adalah 6 bulan: fase intensif 2 bulan dengan INH, Rifampisin, Pirazinamid (2HRZ), dilanjutkan fase lanjutan 4 bulan dengan INH dan Rifampisin (4HR)."
+  },
+  {
+    soalNo: "38",
+    question: "Breastmilk is rich in non-specific and specific immunological properties. Which is the specific immune found in breastmilk?",
+    options: ["A. Immunoglobulin G", "B. Immunoglobulin F", "C. Immunoglobulin A", "D. Immunoglobulin M", "E. Immunoglobulin D"],
+    answer: "C",
+    jawaban: "C. Immunoglobulin A",
+    analysis: "Komponen imunoglobulin spesifik yang paling melimpah dan mendominasi di dalam ASI (terutama kolostrum) adalah Secretory IgA (sIgA). sIgA ini berfungsi memberikan imunitas mukosal lokal dengan cara melapisi saluran cerna bayi, menjebak patogen agar tidak menempel pada dinding epitel usus."
+  },
+  {
+    soalNo: "39",
+    question: "One of your asthmatic patients comes for a follow-up. The mother reported that the 9 year old child seems to need salbutamol daily, especially when exercising, and she has coughing fits that awaken her form sleep about twice a week. Which of the following is the most appropriate management?",
+    options: ["A. Short-acting, inhaled B agonist, as needed", "B. Daily leukotriene modifier with short acting B-agonist", "C. Medium-dose, inhaled corticosteroid with short acting b-agonist", "D. High dose, inhaled corticosteroid with theophylline and short acting B-agonist", "E. Inhaled nedocromil with short acting B-agonist"],
+    answer: "C",
+    jawaban: "C. Medium-dose, inhaled corticosteroid with short acting b-agonist",
+    analysis: "Gejala anak yang memerlukan SABA (salbutamol) setiap hari serta terbangun di malam hari 2 kali seminggu menempatkannya pada klasifikasi Asma Persisten Sedang. Pada tahap ini (Step 3 GINA), tatalaksana kontroler atau controller sangat diwajibkan. Regimen lini pertamanya adalah Inhaled Corticosteroid (ICS) dosis menengah atau ICS dosis rendah dikombinasi dengan LABA."
+  },
+  {
+    soalNo: "40",
+    question: "A 5 years old boy was brought during recurrent constipation. What do you try most to identify during history taking?",
+    options: ["A. Similar constipation in siblings", "B. Allergy in the family", "C. Drug use", "D. History of milk diet", "E. Hydration and food intake"],
+    answer: "E",
+    jawaban: "E. Hydration and food intake",
+    analysis: "Mayoritas (hingga 95%) kasus konstipasi berulang pada kelompok usia balita/anak-anak bersifat fungsional (bukan karena defek anatomi persarafan seperti penyakit Hirschsprung yang gejalanya sejak neonatus). Faktor pemicu utamanya terkait erat dengan modifikasi pola makan, terutama kurangnya asupan cairan (hidrasi yang buruk) dan kurangnya serat makanan."
+  },
+  {
+    soalNo: "41",
+    question: "Visual analog scale is a subjective score to measure severity of a problem. In which problem normally visual analog scale is applied for?",
+    options: ["A. Fear", "B. Pain", "C. Depression", "D. Fever", "E. Anxiety"],
+    answer: "B",
+    jawaban: "B. Pain",
+    analysis: "Visual Analog Scale (VAS) adalah instrumen pengukuran subjektif satu dimensi yang paling umum dan luas digunakan untuk menilai intensitas nyeri (pain) secara klinis. Skala ini biasanya berupa garis lurus sepanjang 10 cm, di mana ujung kiri mewakili 'tidak nyeri' dan ujung kanan mewakili 'nyeri terburuk yang bisa dibayangkan'."
+  },
+  {
+    soalNo: "42",
+    question: "Your vaccination team asked for your suggestion regarding term temperature to store oral polio vaccine. What was your answer? (on degree celcius)",
+    options: ["A. 3-4", "B. 7-8", "C. 1-2", "D. 5-6", "E. 2-8"],
+    answer: "E",
+    jawaban: "E. 2-8",
+    analysis: "Dalam sistem rantai dingin (cold chain) di tingkat fasilitas kesehatan primer (seperti Puskesmas atau posyandu), vaksin Oral Polio Vaccine (OPV) dan mayoritas vaksin rutin lainnya (seperti DPT, Hepatitis B, BCG) harus disimpan pada suhu lemari pendingin standar, yaitu 2°C hingga 8°C."
+  },
+  {
+    soalNo: "43",
+    question: "A 10 days old baby came with complaint icteric, normal delivery with BBL 3100 gram. The baby has given breastmilk right after birth and the weight significantly increase. What is the most possible diagnosis?",
+    options: ["A. Breast milk jaundice", "B. Neonatal hepatitis", "C. Maple syrup urine disease", "D. ABO Incompatibility", "E. Glucose-6-phospate dehydrogenase deficiency"],
+    answer: "A",
+    jawaban: "A. Breast milk jaundice",
+    analysis: "Kunci diagnosis pada kasus ikterik neonatorum ini adalah: timbul di akhir minggu pertama atau minggu kedua (pasien usia 10 hari), bayi tampak sehat, minum ASI kuat, dan berat badan naik secara signifikan. Ini merupakan presentasi klasik dari Breast Milk Jaundice (kuning karena kandungan tertentu dalam ASI yang menghambat konjugasi bilirubin)."
+  },
+  {
+    soalNo: "44",
+    question: "A mother just giving birth for a baby who has congenital heart defect. Which of the test you suggest the mother to take?",
+    options: ["A. Diphteri", "B. Rubella", "C. Syphilis", "D. Tuberculosis", "E. HIV"],
+    answer: "B",
+    jawaban: "B. Rubella",
+    analysis: "Infeksi Rubella pada ibu hamil (terutama di trimester pertama) adalah etiologi utama Congenital Rubella Syndrome (CRS). Trias klasik CRS meliputi katarak kongenital, tuli sensorineural, dan kelainan jantung bawaan (Congenital Heart Defect/CHD), yang paling sering berupa Patent Ductus Arteriosus (PDA) atau stenosis arteri pulmonalis."
+  },
+  {
+    soalNo: "45",
+    question: "Cardiac syncope may lead to a high mortality rate of approximately 10%. What is the red flags of syncope in children?",
+    options: ["A. Ejection fraction <40%", "B. Heart rate 60-80x/minutes", "C. Q wave", "D. QT syndrome", "E. Bradycardia"],
+    answer: "A",
+    jawaban: "A. Ejection fraction <40%",
+    analysis: "Sinkop pada anak seringkali jinak (seperti sinkop vasovagal), namun red flags atau tanda bahaya yang mengarah pada penyebab kardiak struktural/aritmia yang fatal perlu diidentifikasi. Penurunan fungsi pompa jantung secara bermakna, yang ditandai dengan Fraksi Ejeksi (EF) kurang dari 40% pada ekokardiografi, merupakan prediktor kuat risiko mortalitas tinggi dan kematian jantung mendadak (sudden cardiac death)."
+  },
+  {
+    soalNo: "46",
+    question: "A pregnant mother just receive HIV test and showed positive result. She asked if she can breastfed the baby. You adviced nutritional selection should aiming in preventing HIV vertical transmission, hence it should give?",
+    options: ["A. Affordable", "B. Safe", "C. Sustainable", "D. AFASS", "E. Acceptable"],
+    answer: "D",
+    jawaban: "D. AFASS",
+    analysis: "Dalam pedoman pencegahan transmisi HIV dari ibu ke anak (PMTCT), ibu dengan HIV (+) boleh memberikan susu formula pengganti ASI HANYA JIKA syarat AFASS terpenuhi. AFASS merupakan singkatan dari Acceptable (dapat diterima), Feasible (mampu laksana), Affordable (terjangkau harganya), Sustainable (berkelanjutan), dan Safe (aman)."
+  },
+  {
+    soalNo: "47",
+    question: "A 5 years old girl was brought due to pale, Hb 7.0 gr/dL, SI 120 mg/dL, TIBC 456 mg/dL What is the dose of iron you reccomende for this girl?",
+    options: ["A. 2-3 mg/kg/day", "B. 0.5-1 mg/kg/day", "C. 7-8 mg/kg/day", "D. 1-2 mg/kg/day", "E. 4-6 mg/kg/day"],
+    answer: "E",
+    jawaban: "E. 4-6 mg/kg/day",
+    analysis: "Anak mengalami anemia defisiensi besi (ADB) yang ditandai dengan pucat, kadar Hb yang rendah (7.0 gr/dL), dan Total Iron Binding Capacity (TIBC) yang meningkat secara kompensatoris. Berdasarkan panduan IDAI untuk tatalaksana kuratif ADB pada anak, dosis preparat besi elemental per oral (terapeutik) yang direkomendasikan adalah 4 - 6 mg/kgBB/hari, dibagi dalam 2-3 dosis."
+  },
+  {
+    soalNo: "48",
+    question: "Why infant need iron supplementation?",
+    options: ["A. In breastfed baby, milk contain low iron", "B. Baby growth is increase rapidly and reserve depleted rapidly", "C. In the first 4 month, iron supplementation is needed the most", "D. In breastfed baby, iron content of the milk reduce overtime", "E. In breastfed baby, milk production is getting lower"],
+    answer: "B",
+    jawaban: "B. Baby growth is increase rapidly and reserve depleted rapidly",
+    analysis: "Cadangan besi pada bayi aterm normal yang ditransfer selama masa kehamilan hanya cukup untuk memenuhi kebutuhannya hingga usia 4-6 bulan. Setelah periode ini, fase percepatan pertumbuhan (rapid growth) bayi akan menguras cadangan besi tersebut dengan cepat. Jika tidak diberikan asupan besi tambahan (dari MPASI yang difortifikasi atau suplemen), anak akan sangat berisiko jatuh dalam kondisi defisiensi besi."
+  },
+  {
+    soalNo: "49",
+    question: "Denver II interpretation for normal is?",
+    options: ["A. No delay in any domain", "B. Delay occurs only in more than one domain", "C. No caution in any domain", "D. No delay in any domain and only one caution", "E. Delay occurs in no more than two caution"],
+    answer: "D",
+    jawaban: "D. No delay in any domain and only one caution",
+    analysis: "Dalam interpretasi skrining Denver Development Materials II (Denver II), perkembangan anak dikategorikan 'Normal' jika tidak ada komponen yang Delay (keterlambatan/gagal melakukan tugas yang sudah bisa dilakukan 90% anak seusianya) DAN paling banyak hanya memiliki 1 Caution (peringatan/gagal melakukan tugas yang bisa dilakukan oleh 75-90% anak seusianya). Jika terdapat 2 atau lebih Caution, atau 1 Delay, statusnya berubah menjadi 'Suspect' atau dicurigai ada penyimpangan."
+  },
+  {
+    soalNo: "50",
+    question: "The clinic where you are working provide you with Denver II form to work on children development aspect. Why the clinic provides you with the Denver II tool?",
+    options: ["A. To identify risk", "B. To identify response to treatment", "C. To identify diagnose", "D. To identify possible disorder", "E. To identify prognosis"],
+    answer: "D",
+    jawaban: "D. To identify possible disorder",
+    analysis: "Denver II bukanlah tes IQ maupun perangkat untuk menegakkan diagnosis definitif suatu penyakit neurologis. Ia adalah alat skrining awal untuk mendeteksi atau mengidentifikasi adanya kecurigaan atau kemungkinan kelainan/penyimpangan perkembangan (possible disorder / developmental risk) pada anak tanpa gejala klinis yang nyata. Jika hasil Denver II 'Suspect', anak wajib dirujuk untuk pemeriksaan diagnostik lebih lanjut."
+  },
+  {
+    soalNo: "51",
+    question: "New Ballard assessment of baby 28 weeks old gestational age classify baby as:",
+    options: ["A. Extremely Preterm", "B. Near term", "C. Moderate preterm", "D. Very Preterm", "E. Posterm"],
+    answer: "D",
+    jawaban: "D. Very Preterm",
+    analysis: "Sama seperti pembahasan pada Soal 16. Sistem klasifikasi usia kehamilan menurut standar pedoman klinis (WHO) membagi derajat prematuritas menjadi tiga kelompok utama: Extremely preterm (< 28 minggu), Very preterm (28 hingga < 32 minggu), dan Moderate to late preterm (32 hingga < 37 minggu). Karena bayi berusia tepat 28 minggu, ia masuk ke batas bawah kategori Very preterm."
+  },
+  {
+    soalNo: "52",
+    question: "5 year old girl brought due pale, Hb 7, SI 20, TIBC 450. What is the dose of iron recommendation?",
+    options: ["A. 2-3mg/kg/day", "B. 0,5-1", "C. 7", "D. 1-2", "E. 4-6"],
+    answer: "E",
+    jawaban: "E. 4-6 mg/kg/day",
+    analysis: "Soal ini mengulang konsep dari Soal 47. Kasus klinis menunjukkan gambaran Anemia Defisiensi Besi (ADB) dengan trias: Hb yang rendah, Serum Iron (SI) yang rendah, serta Total Iron Binding Capacity (TIBC) yang meningkat akibat tubuh berusaha mengkompensasi kekurangan dengan menambah 'kapasitas angkut' besi. Untuk mengobati ADB pada anak, dosis terapeutik preparat besi elemental per oral menurut panduan IDAI adalah 4-6 mg/kgBB/hari yang dibagi dalam 2 hingga 3 kali pemberian."
+  },
+  {
+    soalNo: "53",
+    question: "12 year old girl diagnosed thalassemia mayor and shorter than her peer. You order bone age examination, what do you expect to see to her height?",
+    options: ["A. Normal bone age", "B. Decreased bone density", "C. Early none age", "D. Increased bone density", "E. Delayed bone age"],
+    answer: "E",
+    jawaban: "E. Delayed bone age",
+    analysis: "Anak dengan Thalassemia Mayor rutin menerima transfusi darah yang memicu deposisi besi berlebih (iron overload) pada berbagai organ, salah satunya kelenjar pituitari dan endokrin lainnya. Kerusakan endokrin sekunder ini, ditambah kondisi anemia kronis dan hipoksia jaringan, sering mengakibatkan perawakan pendek (short stature) serta keterlambatan pematangan tulang belakang (delayed bone age) dan keterlambatan onset pubertas."
+  },
+  {
+    soalNo: "54",
+    question: "Neonate born from hiv positive mother. Born vigorously and drinking formula milk. Mother has been on ART for 1 year. Will you give BCG Vaccination to the neonates?",
+    options: ["A. No, it can lead to BCG disseminated infection", "B. Yes the mother has been on ART", "C. No it can lead to tuberculous disseminated infection", "D. Yes it is safe as the baby born vigorously", "E. no its contraindicated"],
+    answer: "A",
+    jawaban: "A. No, it can lead to BCG disseminated infection",
+    analysis: "Mengulang konsep Soal 14. Vaksin BCG terbuat dari bakteri hidup yang dilemahkan (live attenuated). Pada neonatus yang lahir dari ibu penderita HIV, pemberian vaksin hidup wajib ditunda (dikontraindikasikan) hingga status infeksi HIV pada bayi dapat disingkirkan secara virologis (tes PCR HIV). Pemberian vaksin hidup pada bayi yang imunokompromais sangat berisiko memicu komplikasi fatal berupa penyakit BCG diseminata."
+  },
+  {
+    soalNo: "55",
+    question: "Neonate born 37 week with berth weight 2700 gr. Parents brought the neonate for routine visit 1 month of age. What do you expect to be the minimum body weight?",
+    options: ["A. 3000-3100gr", "B. 3350-3400", "C. 3250-3300", "D. 3500-3600", "E. 3150-3200"],
+    answer: "D",
+    jawaban: "D. 3500-3600 gr",
+    analysis: "Pengulangan dari Soal 2. Mengacu pada target Kenaikan Berat Badan Minimal (KBM) dari pedoman pertumbuhan bayi normal. Di bulan pertama (0-1 bulan), KBM untuk bayi adalah sekitar 800 gram. Jika berat saat lahir adalah 2700 gram, penambahan minimal yang diharapkan agar pertumbuhannya tetap di 'jalur hijau' adalah 2700 + 800 = 3500 gram."
+  },
+  {
+    soalNo: "56",
+    question: "You manage a neonate with patent ductus arteriosus. You expect the closure soon with non invasive procedure. What medicine do you use to accelerate the closure?",
+    options: ["A. Ibuprofen", "B. Dexametason", "C. Epinefrin", "D. Dipenhidramin", "E. Morfin"],
+    answer: "A",
+    jawaban: "A. Ibuprofen",
+    analysis: "Pengulangan Soal 3. Patent Ductus Arteriosus (PDA) dipertahankan tetap paten (terbuka) karena tingginya kadar prostaglandin. Tindakan farmakologis non-invasif untuk menutup PDA ini adalah dengan memberikan inhibitor enzim siklooksigenase (COX inhibitor) untuk memblokir sintesis prostaglandin tersebut. Pilihan utamanya adalah Ibuprofen IV/oral atau Indometasin."
+  },
+  {
+    soalNo: "57",
+    question: "You heard a medium pitched high grade continuous murmur heard best at pulmonic position with harsh machine like quality often radiates to left clavicle. What congenital anomaly represented by your finding?",
+    options: ["A. coarctatio aorta", "B. PDA", "C. TGA", "D. ASD", "E. VSD"],
+    answer: "B",
+    jawaban: "B. PDA",
+    analysis: "Pengulangan Soal 31. Continuous, harsh machine-like murmur (Bising kontinu yang berbunyi kasar seperti mesin) yang terdengar baik saat sistol maupun diastol adalah tanda pemeriksaan fisik auskultasi yang patognomonis (spesifik) untuk Patent Ductus Arteriosus (PDA). Posisi auskultasinya juga sangat khas, yaitu di linea parasternalis kiri atas (area pulmonal) yang menjalar ke tulang selangka (klavikula) kiri."
+  },
+  {
+    soalNo: "58",
+    question: "Mother just gave birth with congenital heart defect. which test do u suggest the mother to take?",
+    options: ["A. sifilis", "B. rubella", "C. difteri", "D. tuberculosis", "E. hiv"],
+    answer: "B",
+    jawaban: "B. rubella",
+    analysis: "Pengulangan Soal 44. Infeksi Rubella pada masa awal kehamilan dapat memicu sindrom multisistem yang dikenal sebagai Congenital Rubella Syndrome (CRS). Trias malformasi organ akibat CRS utamanya menyerang mata (katarak), telinga (tuli sensorineural), dan jantung (penyakit jantung bawaan, paling sering PDA atau stenosis pulmonal). Oleh karena itu, skrining TORCH (khususnya titer Rubella) sangat diperlukan bagi sang ibu."
+  },
+  {
+    soalNo: "59",
+    question: "cardiac syncope may lead to high mortality. what are the red flags?",
+    options: ["A. Ejection fraction <40%", "B. HR 60-80x/m", "C. Q wave", "D. QT Syndrome", "E. Bradikardi"],
+    answer: "A",
+    jawaban: "A. Ejection fraction <40%",
+    analysis: "Mengulang Soal 45. Sinkop kardiogenik harus dibedakan dengan sinkop vasovagal (yang relatif jinak). Tanda-tanda bahaya (red flags) atau prediktor mortalitas tinggi mencakup riwayat pingsan saat olahraga berat, riwayat keluarga mati mendadak, serta abnormalitas struktur/kelistrikan yang parah. Nilai Fraksi Ejeksi (Ejection Fraction) kurang dari 40% merupakan indikator objektif gagal jantung struktural berisiko tinggi."
+  },
+  {
+    soalNo: "60",
+    question: "Pregnant mother HIV test positive. She asked if she can breastfeed the baby. You advise nutritional selection to prevent vertical transmission, hence it should be?",
+    options: ["A. Affordable", "B. Safe", "C. Sustainable", "D. AFASS", "E. Acceptable"],
+    answer: "D",
+    jawaban: "D. AFASS",
+    analysis: "Pengulangan Soal 46. Berdasarkan pedoman dari WHO mengenai ibu HIV positif, susu pengganti ASI atau PASI (susu formula) HANYA boleh diberikan bila memenuhi 5 kriteria kumulatif, yang disingkat AFASS: Acceptable (Diterima budaya dan keluarga), Feasible (Mampu menyiapkan dengan benar), Affordable (Keluarga mampu membelinya tanpa membebani keuangan), Sustainable (Persediaan terjamin dalam jangka panjang), dan Safe (Air dan peralatan dijamin kebersihannya)."
+  },
+  {
+    soalNo: "61",
+    question: "A Result of blood electrolite, showing hiponatremia with sodium level 125 mEq/L. WHICH system that mostly vulnerable to this condition?",
+    options: ["A. Gastrointestinal system", "B. Central Nervous system", "C. Cardiovascular system", "D. Hepatobilliary system", "E. Respiratory system"],
+    answer: "B",
+    jawaban: "B. Central Nervous system",
+    analysis: "Hiponatremia berat (kadar natrium < 130 mEq/L, dalam kasus ini 125 mEq/L) menciptakan keadaan hipoosmolar di cairan ekstraseluler. Akibatnya, air akan berpindah (secara osmosis) ke dalam ruang intraseluler yang lebih pekat, termasuk ke dalam sel-sel otak. Hal ini memicu edema serebri (pembengkakan sel otak), yang menjadikan Sistem Saraf Pusat (SSP / Central Nervous System) sebagai organ yang paling rentan dan terdampak paling fatal. Gejala klinisnya bisa berupa letargi, penurunan kesadaran, hingga kejang."
+  },
+  {
+    soalNo: "62",
+    question: "a 7 months old baby, sodium level 128 mEq/L. Which statement below is true?",
+    options: ["A. Normovolemik hiponatremia", "B. Hypervolemic hyponatremia", "C. Hypovolemic hyponatremia", "D. Hypervolemic hypokalemia", "E. hypovolemic hypokalemia"],
+    answer: "C",
+    jawaban: "C. Hypovolemic hyponatremia",
+    analysis: "Bayi mengalami hiponatremia (Na 128 mEq/L). Meskipun soal ini tidak memberikan data status hidrasi secara eksplisit, pada anak usia bayi (7 bulan), penyebab utama dan paling sering dari hiponatremia adalah kehilangan cairan tubuh akibat diare cair akut atau muntah-muntah (gastroenteritis). Kondisi ini menyebabkan dehidrasi (hipovolemik) di mana kehilangan natrium lebih besar daripada kehilangan air, sehingga secara klinis diklasifikasikan sebagai Hypovolemic hyponatremia."
+  },
+  {
+    soalNo: "63",
+    question: "a patient present at ER with general seizure, normal breathing, and normal circulation. classification PAT?",
+    options: ["A. Respiratory failure", "B. Compensated shock", "C. Cardiopulmonary failure", "D. metabolic/CNS disturbance", "E. Respiratory distress"],
+    answer: "D",
+    jawaban: "D. metabolic/CNS disturbance",
+    analysis: "Pediatric Assessment Triangle (PAT) menilai tiga komponen utama: Appearance (Penampilan/Kesadaran), Work of Breathing (Usaha Napas), dan Circulation to Skin (Sirkulasi). Pasien kejang umum -> Terdapat gangguan pada Appearance (kesadaran/interaksi abnormal). Pernapasan normal -> Work of Breathing normal. Sirkulasi normal -> Circulation to Skin normal. Gangguan terisolasi hanya pada sisi Appearance mengindikasikan adanya disfungsi otak primer, yang diklasifikasikan sebagai Gangguan Metabolik/Susunan Saraf Pusat (Metabolic/CNS disturbance)."
+  },
+  {
+    soalNo: "64",
+    question: "a 8 months old boy was brought to the doctor because he looks pale, leukosit 4,5 x 1000/uL, Hb 8 g/dL and mcv is 72fl, MCH 24pg, MCHC 29 g/dL, PLT 295000u/L, RETICULOCYTE 0,31% with microcytosis, hypocromia, cigar cell, poikilocytosis, noticed on the peripheral blood smear. the data lead you to diagnosed?",
+    options: ["A. Hemolytic anemia", "B. Iron deficiency anemia", "C. anemia on chronic disease", "D. Thallasemia", "E. anemia of sickle cell disease"],
+    answer: "B",
+    jawaban: "B. Iron deficiency anemia",
+    analysis: "Temuan klinis dan laboratorium ini sangat klasik untuk Anemia Defisiensi Besi (ADB). Anak tampak pucat dengan Hb rendah (8 g/dL). Indeks eritrosit menunjukkan MCV rendah (72 fl) dan MCH rendah (24 pg), yang berarti anemia mikrositik hipokromik. Jumlah retikulosit yang rendah (0,31%) menunjukkan tidak adanya respons sumsum tulang yang adekuat akibat kekurangan bahan baku (besi). Kunci patognomonis (sangat khas) pada apusan darah tepi di soal ini adalah ditemukannya cigar cell (sel cerutu / pencil cells), yang merupakan penanda khas untuk ADB."
+  },
+  {
+    soalNo: "65",
+    question: "a 5 years old girl was brought to ER, She was sweating, restless and thin for 10 days, on physical examination found raise pulse, exoptalmos, and dry skin. what diagnosis?",
+    options: ["A. Hipotiroid", "B. Hypertiroid", "C. SUBCLINICAL HYPOTIROID", "D. Congenital hypotiroid"],
+    answer: "B",
+    jawaban: "B. Hypertiroid",
+    analysis: "Pasien menunjukkan gejala status hipermetabolik yang khas: berkeringat (sweating), gelisah (restless), penurunan berat badan/kurus (thin), serta takikardia/peningkatan denyut nadi (raise pulse). Temuan spesifik berupa mata menonjol (exophthalmia / oftalmopati Graves) sangat merujuk pada Penyakit Graves, yang merupakan penyebab tersering Hipertiroidisme pada anak-anak."
+  },
+  {
+    soalNo: "66",
+    question: "a 16 years old girl got late her period, what conclusion?",
+    options: ["A. primer amenore", "B. pubertas prekoks", "C. pseudo amenore", "D. tertiary amneore", "E. secondary amenore"],
+    answer: "E",
+    jawaban: "E. secondary amenore",
+    analysis: "Istilah 'got late her period' umumnya digunakan untuk mendeskripsikan kondisi di mana seorang wanita sebelumnya sudah mengalami menarche (haid pertama), namun siklusnya terhenti atau terlambat selama lebih dari 3 bulan (amenore sekunder). Sebaliknya, jika di usia 16 tahun anak perempuan tersebut belum pernah haid sama sekali, diagnosisnya adalah Amenore Primer."
+  },
+  {
+    soalNo: "67",
+    question: "a 5 years girl was presents she has developed large breast, but not following secondary puberty, diagnosis?",
+    options: ["A. prematur telarch", "B. fibroadenoma mamae", "C. normal puberty", "D. gynecomastia", "E. precocs puberty"],
+    answer: "A",
+    jawaban: "A. prematur telarch",
+    analysis: "Perkembangan payudara (telars) yang terjadi sebelum usia 8 tahun pada anak perempuan diklasifikasikan sebagai awitan dini. Namun, karena pembesaran payudara ini tidak diikuti oleh tanda-tanda pubertas sekunder lainnya (seperti pertumbuhan rambut pubis atau pacu tumbuh), kondisi ini merupakan varian normal yang disebut Premature Thelarche (telars prematur terisolasi). Jika ada tanda pubertas lainnya, baru disebut sebagai Pubertas Prekoks."
+  },
+  {
+    soalNo: "68",
+    question: "a 5 years old girl was brought to ER, suddenly she had redness almost all over the body, experience breathing difficulty, after she consumed lobster. she didnt allergic history. what possible type of hypersensitivity?",
+    options: ["A. HS type 1", "B. HS type 2", "C. HS type 3", "D. HS type 4", "E. mixed type HS"],
+    answer: "A",
+    jawaban: "A. HS type 1",
+    analysis: "Anak mengalami reaksi akut, cepat, dan mengancam nyawa (kemerahan seluruh tubuh/urtikaria generalisata dan kesulitan bernapas) segera setelah terpapar alergen makanan (lobster). Ini adalah gambaran klasik dari reaksi Anafilaksis. Anafilaksis dimediasi oleh pelepasan histamin dari sel mast yang dipicu oleh antibodi IgE. Reaksi alergi yang dimediasi IgE dan terjadi segera (immediate hypersensitivity) adalah Hipersensitivitas Tipe I (Gell and Coombs classification)."
+  },
+  {
+    soalNo: "69",
+    question: "a 3 years old girl was brought to outpatient clinic, because productive cough for 3 weeks, she has no other complaint. father was diagnosed pulmonary TB with acid bacilli smear(++). the girl weighing 27kg and all system were in normal findings. TB skin test 11mm of induration. what management?",
+    options: ["A. FDC 2HRZ/8HR", "B. FDC 2HRZ/4HR", "C. FDC 2HRZE/12HR", "D. FDC 2HRZE/8HR", "E. FDC 2HRZE/10HR"],
+    answer: "B",
+    jawaban: "B. FDC 2HRZ/4HR",
+    analysis: "Soal ini serupa dengan soal 37 sebelumnya. Kita menggunakan sistem skoring TB anak: Batuk persisten > 2 minggu (di soal 3 minggu) = 1 poin. Kontak erat dengan penderita TB dewasa BTA positif (ayah) = 3 poin. Uji tuberkulin positif (indurasi 11 mm) = 3 poin. Total skor adalah 7. Skor >= 6 berarti diagnosis TB Paru Anak ditegakkan. Tatalaksana standarnya adalah panduan OAT 6 bulan: fase intensif selama 2 bulan dengan INH, Rifampisin, Pirazinamid (2HRZ), dilanjutkan fase lanjutan 4 bulan dengan INH dan Rifampisin (4HR)."
+  },
+  {
+    soalNo: "70",
+    question: "Vaginal delivery benefit - vaginal flora colonization helps balancing immunity",
+    options: ["A. vaginal flora colonization helps balancing immunity", "B. cesarean section more safe", "C. vaginal delivery causes infection", "D. cesarean section is recommended always", "E. flora colonization not important"],
+    answer: "A",
+    jawaban: "A. vaginal flora colonization helps balancing immunity",
+    analysis: "Bayi yang lahir melalui persalinan per vaginam akan terpapar dan menelan mikroflora normal dari jalan lahir ibu (seperti Lactobacillus dan Bifidobacterium). Kolonisasi bakteri baik di usus bayi sejak dini ini sangat penting untuk pematangan sistem imun lokal (Gut-Associated Lymphoid Tissue / GALT) dan pembentukan mikrobioma usus yang sehat."
+  },
+  {
+    soalNo: "71",
+    question: "breastmilk is rich in non specific immunological, which is the specific immunoglobulin?",
+    options: ["A. IgM", "B. IgG", "C. IgA", "D. IgD", "E. IgE"],
+    answer: "C",
+    jawaban: "C. IgA (Secretory IgA / sIgA)",
+    analysis: "Soal ini merupakan pengulangan konsep dari Soal 38. ASI (khususnya kolostrum) sangat kaya akan komponen imun spesifik, di mana Imunoglobulin A (IgA) adalah antibodi yang paling dominan. sIgA sangat penting karena berfungsi memicu imunitas mukosa dengan cara melapisi dinding epitel usus bayi, sehingga mencegah perlekatan patogen (bakteri/virus) penyebab infeksi saluran cerna."
+  },
+  {
+    soalNo: "72",
+    question: "a 6 years old girl was brought to ER, The girl choked pin 2 days before. lab normal, what your plan?",
+    options: ["A. perform abdominal thrust", "B. heimlich manuver", "C. back blow", "D. bronchoscopy", "E. jaw thrust"],
+    answer: "D",
+    jawaban: "D. bronchoscopy",
+    analysis: "Kasus ini identik dengan Soal 28. Pada Soal 28, jawaban definitif yang tepat adalah Bronkoskopi. Namun, pada variasi soal ini, pilihan bronkoskopi yang jelas tersedia sebagai opsi. Jika peniti sudah masuk sejak 2 hari yang lalu, benda asing tersebut sudah melewati saluran napas atas (tidak mengancam nyawa secara akut), sehingga manuver Heimlich, abdominal thrust, atau back blow tidak diindikasikan (bahkan berbahaya karena bisa mengubah posisi benda tajam). Untuk ekstraksi benda asing yang sudah bersarang di bronkus, tindakan yang tepat adalah bronkoskopi."
+  },
+  {
+    soalNo: "73",
+    question: "a 6 years old girl was brought to ER, She felt abdominal pain. you found palpable red on both leg and buttock. she otherwise well. diagnose?",
+    options: ["A. ITP", "B. HSP", "C. Dengue fever", "D. SLE", "E. DIC"],
+    answer: "B",
+    jawaban: "B. HSP (Henoch-Schönlein Purpura)",
+    analysis: "Trias klasik dari Henoch-Schönlein Purpura (HSP) atau yang kini sering disebut IgA Vaskulitis adalah: (1) Ruam palpable purpura (bintik merah keunguan yang menonjol saat diraba) yang predileksinya di ekstremitas bawah dan bokong, (2) Nyeri perut kolik (akibat vaskulitis mesenterika), dan (3) Nyeri sendi / artritis. Berbeda dengan ITP atau Dengue, pada HSP jumlah trombosit biasanya normal, dan anak umumnya tampak sehat (otherwise well) di luar gejala-gejala lokalis tersebut."
+  },
+  {
+    soalNo: "74",
+    question: "a 4 years old girl was brought to ER, Dyspnea for 5 hours. she had suffered from a low grade fever with a barking cough for two days. you noticed respiratory distress, stridor inspiratory, steeple sign, diagnose?",
+    options: ["A. Influenza", "B. Difteri", "C. pneumonia", "D. croup", "E. pertusis"],
+    answer: "D",
+    jawaban: "D. croup",
+    analysis: "Ini adalah presentasi sangat klasik dari Sindrom Croup (Laryngotracheobronchitis). Kunci diagnosisnya terletak pada trias gejala: demam tidak terlalu tinggi (low grade fever), batuk menggonggong (barking cough), dan stridor inspiratoar (suara napas kasar saat menarik napas akibat penyempitan jalan napas atas). Pada pemeriksaan rontgen leher AP, temuan khas penyempitan subglotis ini dikenal sebagai steeple sign (gambaran seperti menara gereja)."
+  },
+  {
+    soalNo: "75",
+    question: "a Premature male baby was born at the primary care. he cried spontaneously and good muscle tone while observed. how will you manage the umbilical stomp?",
+    options: ["A. Povidon iodin", "B. Sterile gauge bandage", "C. 70% Alkohol", "D. Topical antiseptic", "E. Topical antibiotic"],
+    answer: "B",
+    jawaban: "B. Sterile gauge bandage",
+    analysis: "Soal ini serupa dengan Soal 19, namun dengan pilihan ganda yang berbeda. Prinsip utama perawatan tali pusat menurut WHO/IDAI adalah menjaganya tetap bersih dan kering (Dry care). Penggunaan alkohol atau povidone iodine secara rutin tidak lagi direkomendasikan karena dapat menunda puput pusar. Jika 'Dry care' tidak ada di pilihan, menutup dengan kassa steril yang kering (Sterile gauge bandage) tanpa penambahan cairan kimia apapun adalah tindakan klinis yang paling mendekati prinsip menjaga tali pusat tetap bersih dan kering."
+  },
+  {
+    soalNo: "76",
+    question: "What are the contraindications for breastfeeding?",
+    options: ["A. Mother with varicella zoster", "B. Mother with TB on OAT for 1 week", "C. Cytomegalovirus infection", "D. Alcohol consumption", "E. Hepatitis C infection"],
+    answer: "B",
+    jawaban: "B. Mother with TB on OAT for 1 week",
+    analysis: "Ibu dengan Tuberkulosis (TB) aktif yang baru menjalani pengobatan OAT kurang dari 2 minggu masih dianggap sangat infeksius. Pada kondisi ini, ibu dikontraindikasikan secara sementara untuk menyusui secara langsung (kontak erat) untuk mencegah penularan via droplet pernapasan, meskipun ASI perah boleh diberikan. Varicella zoster juga merupakan kontraindikasi menyusui langsung jika ibu terinfeksi dalam rentang 5 hari sebelum hingga 2 hari sesudah melahirkan (bayi perlu diisolasi dari ibu). Hepatitis C dan CMV (pada bayi aterm) bukanlah kontraindikasi."
+  },
+  {
+    soalNo: "77",
+    question: "What is the storage temperature for the DPT vaccine?",
+    options: ["A. 0-4 degrees", "B. 3-8 degrees", "C. -5-0 degrees", "D. 8-12 degrees", "E. 2-8 degrees"],
+    answer: "E",
+    jawaban: "E. 2-8 degrees",
+    analysis: "Seperti halnya mayoritas vaksin rutin lainnya di tingkat fasilitas kesehatan primer (Puskesmas), vaksin DPT (Difteri, Pertusis, Tetanus) harus disimpan dalam lemari pendingin bersuhu 2°C hingga 8°C. Vaksin ini tergolong vaksin yang sensitif terhadap pembekuan (freeze-sensitive); jika suhunya turun di bawah 0°C, komponen toksoidnya akan rusak dan vaksin tidak boleh digunakan lagi."
+  },
+  {
+    soalNo: "78",
+    question: "A 4 year old boy, 20kg, comes to the emergency room unconscious with fast breathing but no retractions, cyanosis, soft pulse 180 bpm, cold extremities, capillary refill time 4 seconds, blood pressure 50/30mmhg. The patient had a high fever for 5 days. What is the emergency assessment of this patient?",
+    options: ["A. respiratory distress", "B. CNS disorders", "C. Cardiopulmonary failure", "D. Breathing failure", "E. Circulation failure"],
+    answer: "C",
+    jawaban: "C. Cardiopulmonary failure",
+    analysis: "Jika kita menggunakan Pediatric Assessment Triangle (PAT): Appearance: Koma/tidak sadar (Abnormal). Breathing: Napas cepat (tachypnea) dan sianosis (Abnormal). Circulation: Nadi cepat dan lemah (180x/m), akral dingin, CRT memanjang (4 detik), hipotensi pekat (TD 50/30) (Abnormal). Gangguan pada ketiga sisi PAT mengindikasikan Cardiopulmonary Failure (Kegagalan Kardiopulmonal), yang merupakan stadium akhir (pre-arrest) dari syok dekompensasi atau gagal napas yang tidak teratasi."
+  },
+  {
+    soalNo: "79",
+    question: "A 12 years old girl was presented with chest tightness. Further evaluation confirms her having rheumatic heart disease. Which type of murmur the doctor has to heard on this patient?",
+    options: ["A. Early diastolic parasternal line 3-4th intercostal space", "B. Mid diastolic parasternal line 3-4th intercostal space", "C. Holosystolic parasternal line 3-4th intercostal space", "D. Early systolic parasternal line 3-4th intercostal space", "E. Mid systolic parasternal line 3-4th intercostal space"],
+    answer: "A",
+    jawaban: "A. Early diastolic parasternal line 3-4th intercostal space",
+    analysis: "Penyakit Jantung Rematik (RHD) paling sering menyerang katup mitral (menyebabkan regurgitasi mitral dengan bising holosistolik di apeks), dan tersering kedua menyerang katup aorta. Karena semua opsi pada soal menyebutkan lokasi penjalaran di 'linea parasternal kiri ICS 3-4', ini adalah titik auskultasi khas untuk katup aorta (titik Erb). Kerusakan katup aorta akibat RHD bermanifestasi sebagai Regurgitasi Aorta (AR), yang menghasilkan bising early diastolic decrescendo bernada tinggi di area parasternal kiri sela iga 3-4."
+  },
+  {
+    soalNo: "80",
+    question: "A 10-year old boy complaint altered consciousness, 2 week earlier jaundice preceded with other sign such as fever and abdominal pain, after a few days of treatment at the hospital, the boy become much more toxic. Liver is small, hepatic enzyme level decrease with elevated bilirubin direct & indirect. What is the most possible diagnosis?",
+    options: ["A. Fulminant hepatic failure", "B. Autoimune hepatitis", "C. Hepatitis A", "D. Hepatitis B", "E. Hepatitis C"],
+    answer: "A",
+    jawaban: "A. Fulminant hepatic failure",
+    analysis: "Kasus ini menyajikan gambaran dekompensasi hati akut yang sangat fatal. Anak yang awalnya ikterik dan nyeri perut tiba-tiba mengalami perburukan toksik disertai penurunan kesadaran (ensefalopati hepatik). Kunci diagnostik yang sangat khas di sini adalah ukuran hati yang menyusut (mengecil) disertai fenomena disosiasi enzimatik-bilirubin (kadar enzim transaminase seperti SGOT/SGPT mendadak 'turun/normal', namun kadar bilirubin total terus melonjak naik tajam). Hal ini menandakan nekrosis (kematian) sel parenkim hati yang sangat masif, di mana sudah tidak ada lagi sel hati yang tersisa untuk melepaskan enzim, yang merupakan tanda pasti dari Gagal Hati Fulminan (Fulminant Hepatic Failure)."
+  },
+  {
+    soalNo: "81",
+    question: "A full term neonates with spontaneous delivery with no complication was noticed to have heart murmur at 1 day of age. The murmur was systolic, 2/6 grade. On day 3, murmur transform into a continuous murmur and was first heard on upper left sternal border. The newborn was apparently well, fully breastfed, normal pulse, and oxygen saturation was 100% on room air. What is the likely cause of the heart murmur?",
+    options: ["A. Peripheral pulmonary stenosis", "B. Ventricular septal defect", "C. Patent ductus arteriosus", "D. Atrial septal defect", "E. Mitral stenosis"],
+    answer: "C",
+    jawaban: "C. Patent ductus arteriosus",
+    analysis: "Bising sistolik pada hari pertama yang kemudian berubah menjadi bising kontinu (continuous murmur) pada hari ke-3 di area parasternal kiri atas adalah karakteristik dari Patent Ductus Arteriosus (PDA). Pada awalnya, resistensi vaskular paru masih relatif tinggi sesaat setelah lahir, sehingga pirau (shunt) yang terjadi mungkin hanya terdengar pada fase sistolik. Seiring berjalannya waktu (hari ke-3), resistensi vaskular paru turun drastis, sehingga darah mengalir terus-menerus dari aorta (tekanan tinggi) ke arteri pulmonalis (tekanan rendah) baik saat sistolik maupun diastolik, menghasilkan continuous murmur yang khas."
+  },
+  {
+    soalNo: "82",
+    question: "A 4-years old was brought to hospital due to fever and vomiting for 3 days. No cough or runny nose. Vital signs and general physical status were normal, only positive rumple leed was found. Laboratory test revealed Hb 13 g/dL Hct 43%, WBC 5500, PLT 132.000, the diagnosis is?",
+    options: ["A. Dengue without warning sign", "B. Dengue with warning sign", "C. Expanded dengue syndrome", "D. Severe Dengue", "E. Probable Dengue"],
+    answer: "A",
+    jawaban: "A. Dengue without warning sign",
+    analysis: "Pasien datang dengan demam 3 hari tanpa gejala respiratorik, disertai uji Rumple Leed (uji bendung) positif dan trombositopenia (PLT 132.000). Ini sangat mengarah pada infeksi Dengue. Menurut klasifikasi WHO 2009, pasien ini tergolong Dengue without warning sign (Dengue tanpa tanda bahaya). Meskipun ada gejala muntah, belum dapat dikategorikan sebagai persistent vomiting (muntah persisten yang menyebabkan dehidrasi) karena vital sign dan status fisik umum dilaporkan normal. Tanda bahaya (warning signs) lainnya tidak ditemukan."
+  },
+  {
+    soalNo: "83",
+    question: "10-year old boy has fever, malaise. Drinking lemon causes pain in the gland in his neck. You retrieve his immunization card and realize he failed to get vaccinated for:",
+    options: ["A. MMR", "B. MR", "C. DPT", "D. Varicella", "E. Polio"],
+    answer: "A",
+    jawaban: "A. MMR",
+    analysis: "Gejala pembengkakan kelenjar di area leher yang terasa nyeri saat mengonsumsi makanan/minuman asam (seperti jus lemon) sangat patognomonis untuk pembengkakan kelenjar parotis, atau dikenal dengan Parotitis Epidemika (Gondongan/Mumps). Makanan asam merangsang kelenjar liur untuk memproduksi saliva, yang memicu nyeri hebat pada kelenjar yang meradang. Penyakit ini dapat dicegah dengan imunisasi Mumps, yang tergabung dalam vaksin kombo MMR (Measles, Mumps, Rubella)."
+  },
+  {
+    soalNo: "84",
+    question: "A 5 years old child was bitten by a dog, expected of rabies transmitting animal. An open wound was found on the child's big toe, approximately 1 cm. what is the first action to take?",
+    options: ["A. Rinse with flow water and detergent for 10-15 minutes", "B. Brought to the nearest clinic", "C. Wash with povidone iodine", "D. Immediately give ATS (Anti Tetanus Serum)", "E. Wash with 70% alcohol"],
+    answer: "A",
+    jawaban: "A. Rinse with flow water and detergent for 10-15 minutes",
+    analysis: "Tindakan pertolongan pertama yang paling krusial dan harus segera dilakukan pada kasus gigitan Hewan Penular Rabies (HPR) adalah mencuci luka secara mekanis. Virus rabies memiliki selubung lipid yang sangat rentan hancur oleh sabun/deterjen. Oleh karena itu, pedoman WHO mewajibkan mencuci luka gigitan dengan air mengalir dan sabun/deterjen selama 10 hingga 15 menit sebagai langkah awal sebelum memberikan antiseptik atau intervensi medis lainnya (seperti VAR/SAR)."
+  },
+  {
+    soalNo: "85",
+    question: "A 12 months old baby was presented with diffuse pink maculopapular rash all over his body. He is otherwise well, drink and eat normally, however he has been with fever for 3 days which has resolved the day before the rash appeared. The most likely diagnosis of this condition?",
+    options: ["A. Rubeolla", "B. Erythema infectiosum", "C. Rubela", "D. Erythema multiform", "E. Exanthema subitum"],
+    answer: "E",
+    jawaban: "E. Exanthema subitum",
+    analysis: "Ini adalah pola klinis yang sangat klasik untuk Exanthema Subitum (juga dikenal sebagai Roseola Infantum atau Sixth Disease). Penyakit yang umumnya disebabkan oleh Human Herpesvirus 6 (HHV-6) ini ditandai dengan demam tinggi selama 3-4 hari, dan ruam kemerahan baru muncul tepat setelah demamnya turun secara tiba-tiba (suhu tubuh kembali normal). Anak biasanya tampak aktif dan baik-baik saja (otherwise well). Berbeda dengan Campak (Rubeola) di mana ruam muncul justru pada puncak demam yang tinggi."
+  },
+  {
+    soalNo: "86",
+    question: "a 10 year old girl brought to the hospital suddenly can't walk, the child was not able to control the miction and defecation. One week before there was a paralysis, the child had a high fever for 3 days with cough and colds that are cured without treatment. What is the diagnosis in this child?",
+    options: ["A. Guillain Barre Syndrome", "B. Multiple Sclerosis", "C. Transverse Myelitis", "D. Meningitis", "E. Poliomyelitis"],
+    answer: "C",
+    jawaban: "C. Transverse Myelitis",
+    analysis: "Anak mengalami kelemahan ekstremitas bawah (tiba-tiba tidak bisa berjalan) yang didahului oleh riwayat infeksi saluran napas atas (ISPA) seminggu sebelumnya. Kunci diagnostik utamanya adalah adanya retensi atau inkontinensia urin dan alvi (tidak bisa mengontrol buang air). Disfungsi sfingter ini sangat khas menandakan adanya lesi inflamasi pada medula spinalis (Myelitis Transversa). Pada sindrom Guillain-Barre (GBS), disfungsi otonom kandung kemih dan usus jarang terjadi, atau kalaupun ada biasanya di fase lambat, bukan keluhan utama di awal."
+  },
+  {
+    soalNo: "87",
+    question: "A 11-month old baby had been brought to the hospital with pale, and general condition were normal. He was born premature and got exclusive breast milk. Leucocyte 4.5x103/uL Hb 8, and MCH 24, MCHC 29, platelet 295.000, reticulocyte 0.31% with microcytosis, hypochromia, cigar cell, poikilocytosis, noticed on the peripheral blood smear. What do you plan to give for this patient?",
+    options: ["A. Iron chelation", "B. Blood transfusion", "C. Folic acid", "D. Corticosteroid", "E. Iron theraphy"],
+    answer: "E",
+    jawaban: "E. Iron theraphy",
+    analysis: "Gambaran klinis dan lab mengarah pada Anemia Defisiensi Besi (ADB) berat. Faktor risiko pasien ini sangat kuat: riwayat prematuritas (cadangan besi rendah sejak lahir) dan asupan ASI eksklusif berkepanjangan tanpa suplementasi (kandungan besi pada ASI sangat rendah). Diagnosis dipastikan dengan temuan apusan darah berupa mikrositik hipokromik dan cigar cell (sel cerutu). Tata laksana utamanya adalah pemberian preparat besi oral (Iron therapy). Kelasi besi (iron chelation) justru diberikan untuk pasien kelebihan besi seperti pada Thalassemia."
+  },
+  {
+    soalNo: "88",
+    question: "When blood vessel injury occurs, normal homeostasis may activate?",
+    options: ["A. Vasoconstriction, platelet activation, coagulation cascade activation", "B. Vasodilation, platelet activation, coagulation cascade activation", "C. Vasoconstriction, platelet deactivation, coagulation cascade activation", "D. Vasodilatation, platelet deactivation, coagulation cascade deactivation", "E. Vasoconstriction, platelet activation, coagulation cascade activation"],
+    answer: "A",
+    jawaban: "A. Vasoconstriction, platelet activation, coagulation cascade activation",
+    analysis: "Proses penghentian perdarahan fisiologis (hemostasis) melibatkan 3 tahapan utama yang berurutan: (1) Vasokonstriksi pembuluh darah setempat untuk mengurangi aliran darah yang keluar, (2) Pembentukan sumbat trombosit (hemostasis primer) melalui aktivasi dan agregasi platelet, dan (3) Pembentukan bekuan fibrin yang stabil (hemostasis sekunder) melalui aktivasi kaskade koagulasi."
+  },
+  {
+    soalNo: "89",
+    question: "A 6 years old girl was brought with blank stare since last 6 months. When stunned, the child does not respond to any calls or questions. After the attack the child return to normal activities. Physical and neurological examination were normal. On EEG shows a picture of generalized slow spike wave 2-3spd. What is the diagnosis of this patient?",
+    options: ["A. Temporal lobe epilepsy", "B. Juvenile absence epilepsy", "C. Idiopathic generalized epilepsy", "D. Childhood absence epilepsy", "E. Day dreaming"],
+    answer: "D",
+    jawaban: "D. Childhood absence epilepsy",
+    analysis: "Pasien sering menunjukkan gejala menatap kosong (blank stare), tidak responsif secara tiba-tiba, dan segera kembali normal tanpa fase bingung post-iktal. Presentasi ini sangat khas untuk tipe kejang absans (Petit mal). Konfirmasi definitifnya adalah temuan EKG berupa gambaran generalized 3 Hz (2-3 per second) spike-and-wave discharges, yang merupakan hallmark dari sindrom Childhood Absence Epilepsy (CAE)."
+  },
+  {
+    soalNo: "90",
+    question: "A 8-months old boy was brought to the doctor because he looked pale. Leucoyte 4.5x103/uL Hb 8g/dL and MCV is 72 fl, MCH 24pg, PLT 235x103/uL, retikulosit 0.31% with microcytosis, hypochromia, cigar cell, poikilocytosis, noticed on the peripheral blood smear. The data lead you to suspicions of:",
+    options: ["A. Hemolytic anemia", "B. Iron deficiency anemia", "C. Anemia on chronic disease", "D. Thalassemia", "E. Anemia of sickle cell disease"],
+    answer: "B",
+    jawaban: "B. Iron deficiency anemia",
+    analysis: "Soal ini merupakan repetisi yang hampir identik dari Soal 64. Profil hematologi menunjukkan anemia mikrositik hipokromik dengan respons retikulosit yang sangat rendah, mengindikasikan gangguan produksi. Penemuan cigar cell (sel cerutu) pada apusan darah tepi adalah morfologi yang sangat spesifik untuk Anemia Defisiensi Besi."
+  },
+  {
+    soalNo: "91",
+    question: "An 8-year-old girl injured her knee and goes to you. You advise rest and icing, as well as ibuprofen for the pain. Thirty minutes after 200 mg of Ibuprofen, she develops diffuse hives and swelling of her lips and eyelids. She also feels difficult to breath, when revisit you for the new complaints. What is your diagnosis conclusion?",
+    options: ["A. Anaphylaxis", "B. Drug allergy", "C. Respiratory problem", "D. Angioedema", "E. Asthma"],
+    answer: "A",
+    jawaban: "A. Anaphylaxis",
+    analysis: "Pasien mengalami reaksi alergi sistemik yang berat, cepat, dan berpotensi mengancam nyawa segera setelah terpapar obat (Ibuprofen). Kriteria diagnosis anafilaksis terpenuhi karena melibatkan lebih dari satu sistem organ: sistem kulit/mukosa (urtikaria/hives difus, angioedema pada bibir dan kelopak mata) dan sistem respirasi (kesulitan bernapas/sesak). Walaupun ini dipicu oleh alergi obat, diagnosis klinis kegawatdaruratannya yang paling tepat dan komprehensif adalah Anafilaksis."
+  },
+  {
+    soalNo: "92",
+    question: "A 4-year old girl had been experiencing high fever for 3 days and experienced colicky abdominal pain and bloody diarrhea. She passed 9 bowel movements per day accompanied by nausea and vomiting. She was pale with sunken eyes. Stool revealed a lot of mucus, blood and leucocytes. What is your conclusion?",
+    options: ["A. Ascariasis", "B. E. coli Infection", "C. Shigellosis", "D. Taeniasis", "E. Giardiasis"],
+    answer: "C",
+    jawaban: "C. Shigellosis",
+    analysis: "Gejala diare berdarah yang disertai lendir (mucus), demam tinggi, nyeri perut kolik (tenesmus), dan ditemukannya banyak leukosit pada feses adalah gambaran klasik dari Disentri Basiler. Penyebab utama disentri basiler pada anak di negara berkembang adalah infeksi bakteri Shigella sp. (Shigellosis). Kehadiran leukosit masif di feses membedakannya dari disentri amuba (Entamoeba histolytica) di mana leukosit biasanya lebih sedikit karena dihancurkan oleh parasit."
+  },
+  {
+    soalNo: "93",
+    question: "Results of blood electrolyte from a 4 years old patient shown the potassium level was 6.5 mEq/L what is possible electrocardiograph finding in this case?",
+    options: ["A. Inverted T Wave", "B. P Mitral", "C. Prolonged QOTC", "D. T-Tall", "E. Prolonged QR Interval"],
+    answer: "D",
+    jawaban: "D. T-Tall",
+    analysis: "Kadar kalium 6.5 mEq/L menunjukkan kondisi Hiperkalemia (normalnya 3.5 - 5.5 mEq/L). Perubahan elektrokardiogram (EKG) yang paling dini dan khas pada hiperkalemia ringan-sedang adalah gelombang T yang meruncing, tinggi, dan sempit yang dikenal sebagai Tall T wave (T-Tall) atau peaked T wave. Jika hiperkalemia makin berat, akan berlanjut menjadi pemanjangan interval PR, hilangnya gelombang P, hingga pelebaran kompleks QRS."
+  },
+  {
+    soalNo: "94",
+    question: "At newborn screening, the TSH value was 60 mU/L. what is your next step?",
+    options: ["A. Perform a confirmatory test", "B. Perform mother's thyroid function test", "C. Treat with levothyroxine", "D. Repeat the newborn screening", "E. Perform thyroid ultrasound"],
+    answer: "A",
+    jawaban: "A. Perform a confirmatory test",
+    analysis: "Berdasarkan pedoman IDAI mengenai Skrining Hipotiroid Kongenital (SHK), jika hasil skrining (darah tumit/kapiler) menunjukkan TSH > 20 mU/L, maka wajib dilakukan tes konfirmasi (TSH dan FT4 dari darah vena). Namun, pedoman juga menyebutkan bahwa jika nilai TSH awal sangat tinggi (> 40 mU/L seperti pada kasus ini, 60 mU/L), terapi Levotiroksin harus segera dimulai segera setelah pengambilan sampel darah vena untuk konfirmasi, tanpa perlu menunggu hasil konfirmasinya keluar."
+  },
+  {
+    soalNo: "95",
+    question: "A girl, 6 years old, with short stature. Physical examination revealed that height-for-age z score was -3SD. We found webbed neck, cubitus valgus, and wide space nipples. What is most likely the diagnosis of this case?",
+    options: ["A. Kalman syndrome", "B. Edward Syndrome", "C. Patau Syndrome", "D. Turner Syndrome", "E. Down Syndrome"],
+    answer: "D",
+    jawaban: "D. Turner Syndrome",
+    analysis: "Ini adalah trias fenotipe klasik untuk Sindrom Turner (monosomi kromosom seks, 45,X0): anak perempuan dengan perawakan sangat pendek (stunting berat <-3SD), leher berselaput/melebar (webbed neck), lengan bersudut lebar saat diluruskan (cubitus valgus), dan jarak antara kedua puting susu yang melebar (wide-spaced nipples / shield-like chest)."
+  },
+  {
+    soalNo: "96",
+    question: "A patient presents in the ER with general Seizure, normal breathing, normal circulation. What is the classification of this patient according to Paediatric Assesment Triangle?",
+    options: ["A. Respiratory failure", "B. Compensated shock", "C. Cardiopulmonary failure", "D. Metabolic/CNS disturbance", "E. Respiratory distress"],
+    answer: "D",
+    jawaban: "D. Metabolic/CNS disturbance",
+    analysis: "Identik dengan Soal 63. Dalam penilaian Pediatric Assessment Triangle (PAT), anak yang mengalami kejang memiliki gangguan pada sisi Appearance (Penampilan/Interaksi), namun sisi Work of Breathing (Usaha napas) dan Circulation (Sirkulasi) tetap normal. Gangguan terisolasi hanya pada sisi Appearance mengklasifikasikannya sebagai Metabolic/CNS disturbance (Gangguan susunan saraf pusat atau metabolik)."
+  },
+  {
+    soalNo: "97",
+    question: "A 6 years old girl was brought to you due to tremor for the past 10 days. She was sweating, restless and thin. On physical examination, you found pulses were 112x/minute, exophthalmia and dry skin. What is possible diagnosis of this case?",
+    options: ["A. Acquired hypothyroid", "B. Hyperthyroid", "C. Subclinical hypothyroid", "D. Congenital hypothyroid", "E. Supraventricular tachycardia"],
+    answer: "B",
+    jawaban: "B. Hyperthyroid",
+    analysis: "Identik dengan Soal 65. Gejala klinis pasien berupa tremor, takikardia (nadi 112x/m), berkeringat (sweating), gelisah (restless), kurus, dan penonjolan bola mata (exophthalmia / oftalmopati Graves) adalah tanda-tanda hipermetabolisme yang sangat spesifik untuk Hipertiroidisme (Penyakit Graves)."
+  },
+  {
+    soalNo: "98",
+    question: "A 16 years old girl has never got her period. What is your conclusion?",
+    options: ["A. Primary amenorrhea", "B. Precocious Puberty", "C. Pseudo amenorrhea", "D. Tertiary amenorrhea", "E. Secondary amenorrhea"],
+    answer: "A",
+    jawaban: "A. Primary amenorrhea",
+    analysis: "Seorang remaja putri berusia 16 tahun yang belum pernah mengalami menarche (haid pertama kalinya) diklasifikasikan mengalami Amenore Primer. Batas usianya secara klinis adalah 15 tahun (jika pertumbuhan seks sekundernya normal) atau 13 tahun (jika tidak ada pertumbuhan payudara/seks sekunder). Ini berbeda dengan Soal 66 di mana kata yang digunakan adalah 'got late her period' yang merujuk pada amenore sekunder."
+  },
+  {
+    soalNo: "99",
+    question: "A 5 years old girl was presented to you as she has developed large breast, but not followed by another signs of puberty. What possible diagnose of this case?",
+    options: ["A. Premature thelarche", "B. Fibroadenoma mammae", "C. Normal puberty", "D. Gynecomastia", "E. Precocious puberty"],
+    answer: "A",
+    jawaban: "A. Premature thelarche",
+    analysis: "Identik dengan Soal 67. Pertumbuhan payudara yang terjadi secara terisolasi tanpa disertai tanda-tanda pubertas lainnya (seperti pertumbuhan rambut kemaluan atau percepatan tinggi badan) pada anak perempuan di bawah usia 8 tahun disebut Premature Thelarche. Ini umumnya jinak dan self-limiting."
+  },
+  {
+    soalNo: "100",
+    question: "A 9-year old girl was sent admitted to the emergency department because she had mid palpable wheats almost all over her body and she also experience breathing difficulty. Before admission she consumed lobsters. She was on her vacation with her classmates and the teacher did not know her allergic history. Based on the case, what is the possible type of hypersensitivity?",
+    options: ["A. Type 1 Hypersensitivity", "B. Type 2 Hypersensitivity", "C. Type 4 Hypersensitivity", "D. Type 3 Hypersensitivity", "E. Mixed type Hypersensitivity"],
+    answer: "A",
+    jawaban: "A. Type 1 Hypersensitivity",
+    analysis: "Identik dengan Soal 68. Pasien mengalami reaksi anafilaksis (kemerahan menyeluruh berupa wheals/urtikaria dan kesulitan bernapas) segera setelah menelan alergen (lobster). Reaksi alergi yang berlangsung instan, diperantarai antibodi IgE, dan menyebabkan degranulasi sel mast diklasifikasikan sebagai Hipersensitivitas Tipe 1 (Reaksi Tipe Segera / Immediate)."
+  },
+  {
+    soalNo: "101",
+    question: "A newborn is found to have a low muscle tone (hypotonia) and poor feeding despite appearing alert. The mother reports she had a viral infection during pregnancy. Genetic testing reveals a mutation in the SMN1 gene. What is the most likely diagnosis?",
+    options: ["A. Duchenne Muscular Dystrophy", "B. Spinal Muscular Atrophy (SMA)", "C. Cerebral Palsy", "D. Myasthenia Gravis", "E. Congenital Myopathy"],
+    answer: "B",
+    jawaban: "B. Spinal Muscular Atrophy (SMA)",
+    analysis: "Atrofi Otot Spinalis (SMA) adalah penyakit genetik autosommal resesif yang disebabkan oleh mutasi gen SMN1 (Survival Motor Neuron 1). Penyakit ini menyebabkan degenerasi motoneuron anterior di medula spinalis, mengakibatkan kelemahan otot progresif. Presentasi neonatusnya mencakup hipotonia, kesulitan pemberian makan, dan lemahnya gerakan anggota badan meskipun kesadaran tetap normal."
+  },
+  {
+    soalNo: "102",
+    question: "Seorang bayi berusia 3 minggu dibawa karena tidak mau menyusu dan muntah-muntah setelah menyusu. Pemeriksaan fisik ditemukan dehidrasi sedang dan perut teraba massa yang keras di epigastrium. Berapakah diagnosis klinis yang paling mungkin?",
+    options: ["A. Gastroenteritis akut", "B. Invaginasi usus", "C. Stenosis pilorus", "D. Atresia pilorus", "E. Gastritis erosif"],
+    answer: "C",
+    jawaban: "C. Stenosis pilorus",
+    analysis: "Stenosis pilorus hipertrofik adalah penyakit pada neonatus dan bayi muda (usia puncak 2-5 minggu) yang ditandai dengan mual, muntah proyektil (muntah yang kuat menonjol keluar), dehidrasi, dan dapat teraba 'olive' (massa keras) di epigastrium yang merupakan otot pilorus yang hipertrofik. Diagnosis dikonfirmasi dengan USG abdomen."
+  },
+  {
+    soalNo: "103",
+    question: "Seorang bayi baru lahir aterm dengan riwayat asfiksia berat tidak segera menangis saat lahir. Pada observasi di ruang rawat, bayi mengalami letargi, kejang, dan terdengar tangisan yang melengking tajam (high-pitched cry). Apakah diagnosis yang paling mungkin?",
+    options: ["A. Hypoxic-Ischemic Encephalopathy (HIE)", "B. Perdarahan intraventrikular", "C. Meningitis neonatorum", "D. Tetanus neonatorum", "E. Kelainan bawaan otak struktur"],
+    answer: "A",
+    jawaban: "A. Hypoxic-Ischemic Encephalopathy (HIE)",
+    analysis: "Gejala kejang yang didahului oleh riwayat asfiksia perinatal (kekurangan oksigen saat lahir) dan disertai manifestasi neurologis khas seperti high-pitched cry adalah tanda dari kerusakan jaringan otak akibat hipoksia dan iskemia, yang dikenal sebagai HIE stadium II atau III."
+  },
+  {
+    soalNo: "104",
+    question: "Seorang bayi lahir prematur pada usia gestasi 31 minggu. Untuk mencegah morbiditas neurologis dan metabolik, berapakah target minimal Gula Darah Sewaktu (GDS) yang direkomendasikan untuk dipertahankan pada bayi ini?",
+    options: ["A. 30 mg/dL", "B. 35 mg/dL", "C. 40 mg/dL", "D. 45 mg/dL", "E. 50 mg/dL"],
+    answer: "D",
+    jawaban: "D. 45 mg/dL",
+    analysis: "Bayi prematur berisiko tinggi mengalami hipoglikemia karena kurangnya cadangan glikogen dan belum matangnya proses glukoneogenesis. Mayoritas pedoman neonatologi menetapkan batas operasional (target aman) untuk gula darah pada neonatus sakit atau prematur adalah ≥ 45 hingga 47 mg/dL."
+  },
+  {
+    soalNo: "105",
+    question: "Seorang neonatus berusia 4 hari dibawa karena kuning. Pemeriksaan fisik menunjukkan ikterus yang meluas hingga ke area lengan dan tungkai di bawah siku dan lutut (Kramer IV). Berapakah perkiraan rentang kadar bilirubin indirek serum pada pasien ini?",
+    options: ["A. 5 - 7 mg/dL", "B. 8 - 10 mg/dL", "C. 11 - 15 mg/dL", "D. 16 - 20 mg/dL", "E. > 20 mg/dL"],
+    answer: "C",
+    jawaban: "C. 11 - 15 mg/dL",
+    analysis: "Penilaian zona Kramer digunakan untuk memperkirakan kadar bilirubin secara visual. Kramer 1 (Kepala-leher: ~5 mg/dL), Kramer 2 (Dada-pusar: ~9 mg/dL), Kramer 3 (Pusar-paha: ~11 mg/dL), dan Kramer 4 (Ekstremitas: ~11-15 mg/dL). Kramer 5 mencakup telapak tangan dan kaki (seringkali >15 mg/dL)."
+  },
+  {
+    soalNo: "106",
+    question: "Hiperbilirubinemia pada neonatus dapat dipengaruhi oleh berbagai faktor. Manakah dari kondisi berikut yang merupakan faktor risiko utama terjadinya ikterus neonatorum berat?",
+    options: ["A. Usia kehamilan < 32 minggu (prematuritas)", "B. Berat lahir > 4000 gram", "C. Pemberian ASI eksklusif adekuat sejak lahir", "D. Ibu dengan golongan darah AB", "E. Ibu dengan riwayat hipertensi tanpa komplikasi"],
+    answer: "A",
+    jawaban: "A. Usia kehamilan < 32 minggu (prematuritas)",
+    analysis: "Prematuritas adalah faktor risiko utama karena organ hati (liver) janin yang lahir prematur belum matang sempurna untuk memproduksi enzim konjugasi bilirubin (UDP-GT). Akibatnya, bilirubin indirek mudah menumpuk."
+  },
+  {
+    soalNo: "107",
+    question: "Bayi baru lahir tampak sesak napas. Terdapat retraksi dada berat dan frekuensi napas (RR) mencapai 90 kali/menit. Skor Downes dievaluasi > 6 (ancaman gagal napas), namun bayi masih memiliki upaya bernapas spontan. Apakah tindakan tatalaksana awal yang paling tepat?",
+    options: ["A. Oksigen aliran rendah via nasal canulla", "B. Lakukan Ventilasi Tekanan Positif (VTP)", "C. Pasang Continuous Positive Airway Pressure (CPAP)", "D. Langsung intubasi endotrakeal", "E. Cukup jaga kehangatan"],
+    answer: "C",
+    jawaban: "C. Pasang Continuous Positive Airway Pressure (CPAP)",
+    analysis: "Jika bayi mengalami gawat napas berat (Downes > 6) tetapi masih bernapas spontan secara aktif, CPAP adalah intervensi non-invasif lini pertama yang sangat krusial. CPAP membantu menahan alveolus agar tetap terbuka di akhir ekspirasi. VTP atau intubasi umumnya dilakukan jika bayi apneu (berhenti napas), gasping, atau jika penggunaan CPAP gagal menstabilkan kondisinya."
+  },
+  {
+    soalNo: "108",
+    question: "Seorang ibu hamil dengan usia kehamilan 32 minggu menjalani USG rutin. Dokter kandungan mencurigai janin mengalami kelainan kongenital karena ditemukan adanya oligohidramnion (cairan ketuban sangat sedikit). Kelainan apakah yang paling mungkin dialami oleh janin?",
+    options: ["A. Atresia duodenum", "B. Agenesis renal", "C. Atresia esofagus", "D. Hernia diafragmatika", "E. Hidrosefalus"],
+    answer: "B",
+    jawaban: "B. Agenesis renal",
+    analysis: "Pada pertengahan hingga akhir kehamilan, cairan ketuban sebagian besar diproduksi oleh urin janin. Kurangnya cairan ketuban secara drastis (oligohidramnion) merupakan penanda kuat adanya defek pada sistem saluran kemih janin, seperti agenesis renal (ginjal tidak terbentuk) atau obstruksi saluran kemih bawah."
+  },
+  {
+    soalNo: "109",
+    question: "Seorang balita terdiagnosis Anemia Defisiensi Besi dengan kadar Hb 6.0 g/dL dan apusan darah mikrositik hipokromik. Untuk terapi kuratif, berapakah dosis besi (Fe) elemental yang direkomendasikan?",
+    options: ["A. 1 - 2 mg/kgBB/hari", "B. 2 - 3 mg/kgBB/hari", "C. 4 - 6 mg/kgBB/hari", "D. 7 - 8 mg/kgBB/hari", "E. > 10 mg/kgBB/hari"],
+    answer: "C",
+    jawaban: "C. 4 - 6 mg/kgBB/hari",
+    analysis: "Untuk anak dengan anemia berat (Hb 6) akibat defisiensi besi, dosis terapeutik preparat besi oral yang dianjurkan oleh panduan IDAI adalah 4-6 mg/kgBB/hari, biasanya dibagi dalam 2 hingga 3 kali pemberian untuk mengurangi efek samping pada lambung."
+  },
+  {
+    soalNo: "110",
+    question: "Bayi laki-laki berusia 2 bulan dibawa ke poli anak karena sering tampak kebiruan (sianosis) sejak lahir. Pada pemeriksaan foto rontgen toraks (CXR), didapatkan siluet jantung yang berbentuk menyerupai telur yang menggantung dengan mediastinum superior yang sempit (egg-on-a-string appearance). Apakah diagnosis penyakit jantung bawaan tersebut?",
+    options: ["A. Tetralogy of Fallot (ToF)", "B. Transposition of the Great Arteries (TGA)", "C. Patent Ductus Arteriosus (PDA)", "D. Ventricular Septal Defect (VSD)", "E. Coarctation of the Aorta"],
+    answer: "B",
+    jawaban: "B. Transposition of the Great Arteries (TGA)",
+    analysis: "Bentuk egg-on-a-string adalah gambaran radiologis patognomonis untuk TGA, penyakit jantung bawaan sianotik di mana posisi aorta dan arteri pulmonalis tertukar lokasinya. Bentuk telur terjadi karena pembesaran atrium kanan dan ventrikel kanan, sementara tangkai asimetrisnya terjadi karena aorta dan arteri pulmonalis saling tumpang tindih."
+  },
+  {
+    soalNo: "111",
+    question: "Anak laki-laki usia 3 tahun dibawa ke IGD dengan keluhan demam yang tidak turun selama 6 hari. Pemeriksaan fisik menemukan kemerahan pada bibir yang pecah-pecah, lidah kemerahan berpapil menonjol (strawberry tongue), ruam kulit makulopapular, serta pembesaran kelenjar getah bening leher. Diagnosis apakah yang paling tepat?",
+    options: ["A. Penyakit Kawasaki (Kawasaki disease)", "B. Demam Berdarah Dengue", "C. Demam Scarlet (Scarlet fever)", "D. Campak (Measles)", "E. Rubella"],
+    answer: "A",
+    jawaban: "A. Penyakit Kawasaki (Kawasaki disease)",
+    analysis: "Kriteria demam tinggi ≥ 5 hari yang resisten terhadap antipiretik, ditambah perubahan mukosa oral (strawberry tongue, bibir fisura merah), ruam kulit polimorfik, dan limfadenopati servikal akut unilateral adalah presentasi klasik dari Penyakit Kawasaki. Kondisi ini harus segera diterapi dengan IVIG untuk mencegah aneurisma arteri koroner."
+  },
+  {
+    soalNo: "112",
+    question: "Suplementasi zat besi profilaksis rutin seringkali direkomendasikan pada bayi (infant) sehat yang mengonsumsi ASI. Apa alasan fisiologis paling utama yang mendasari rekomendasi ini?",
+    options: ["A. Kandungan zat besi di dalam ASI sama sekali tidak dapat diserap oleh usus.", "B. Seiring dengan percepatan pertumbuhan, kebutuhan besi meningkat pesat melampaui cadangan dari lahir.", "C. Mencegah timbulnya alergi saluran cerna.", "D. Suplementasi besi terbukti menurunkan risiko pneumonia berat.", "E. Proses glukoneogenesis bayi memerlukan zat besi dosis sangat tinggi."],
+    answer: "B",
+    jawaban: "B. Seiring dengan percepatan pertumbuhan, kebutuhan besi meningkat pesat melampaui cadangan dari lahir.",
+    analysis: "Pada saat lahir, bayi cukup bulan memiliki cadangan besi yang cukup hingga usia 4-6 bulan. Memasuki usia tersebut, volume darah dan massa sel darah merah meningkat pesat mengikuti kurva pacu tumbuh badannya. Cadangan besi bawaan lahir akan cepat habis, dan kandungan besi di ASI (walau penyerapannya sangat baik) jumlah absolutnya tidak lagi mencukupi."
+  },
+  {
+    soalNo: "113",
+    question: "Pasien balita di ruang intensif (PICU) telah terpasang ventilator mekanik selama 3 hari. Untuk mengurangi risiko komplikasi Ventilator-Associated Pneumonia (VAP), intervensi manakah yang merupakan bagian dari standar perawatan pencegahan (VAP bundle)?",
+    options: ["A. Pemberian antibiotik profilaksis spektrum luas.", "B. Memosisikan kepala tempat tidur tegak lurus 90 derajat.", "C. Pembersihan rongga oral sesuai protokol dan posisi baring elevasi 30-45 derajat.", "D. Menghindari tindakan suction sekresi sama sekali.", "E. Mengganti selang ETT (Endotracheal Tube) setiap 24 jam."],
+    answer: "C",
+    jawaban: "C. Pembersihan rongga oral sesuai protokol dan posisi baring elevasi 30-45 derajat.",
+    analysis: "VAP bundle mencakup serangkaian praktik pencegahan infeksi bernapas, yang pilar utamanya adalah memosisikan kepala di elevasi (untuk mengurangi risiko mikro-aspirasi asam lambung) dan membersihkan mulut secara rutin dengan klorheksidin/antiseptik (untuk mengeradikasi kolonisasi bakteri flora di orofaring)."
+  },
+  {
+    soalNo: "114",
+    question: "Seorang pasien anak menunjukkan gambaran EKG bradikardia (nadi sangat lambat). Secara klinis pasien tampak pucat, lemas, tidak stabil (hipotensi), dan perfusinya buruk. Ventilasi dan oksigenasi telah dimaksimalkan, namun bradikardia menetap. Apakah terapi farmakologi intravena lini pertama yang harus dipertimbangkan?",
+    options: ["A. Atropin sulfat", "B. Epinefrin", "C. Adenosin", "D. Amiodaron", "E. Lidokain"],
+    answer: "B",
+    jawaban: "B. Epinefrin",
+    analysis: "Berdasarkan algoritma PALS untuk bradikardia simtomatik bergejala yang memicu syok kardiogenik, kompresi dada dimulai bila HR < 60x/menit meskipun telah diventilasi. Obat lini pertama untuk merangsang pompa jantung secara simpatis adalah pemberian epinefrin (adrenalin). Atropin hanya menjadi lini pertama untuk bradikardia akibat dominansi vagal murni atau blok jantung primer (AV block)."
+  },
+  {
+    soalNo: "115",
+    question: "Kerusakan pada podosit penyaring glomerulus ginjal memicu terjadinya Sindrom Nefrotik. Manakah temuan klinis laboratorium paling awal dan paling krusial (hallmark) pada kondisi ini?",
+    options: ["A. Hematuria masif", "B. Peningkatan Ureum dan Kreatinin masif", "C. Proteinuria masif", "D. Leukosituria", "E. Anemia berat"],
+    answer: "C",
+    jawaban: "C. Proteinuria masif",
+    analysis: "Bocornya struktur penyaring membuat protein dalam jumlah sangat besar (terutama albumin) lolos ke dalam urin. Hal ini secara langsung menyebabkan hipoalbuminemia sekunder dalam darah, yang kemudian memicu hilangnya tekanan onkotik dan berakhir pada terbentuknya edema masif (bengkak seluruh tubuh)."
+  },
+  {
+    soalNo: "116",
+    question: "Anak usia 4 tahun datang karena bengkak di wajah, perut, dan tungkai. Pemeriksaan laboratorium menunjukkan kadar albumin darah sangat rendah, hiperkolesterolemia, dan proteinuria +3. Terapi diuretik (Furosemid) dari faskes awal belum mengurangi bengkaknya secara signifikan. Terkait penyelesaian keluhan utama penyakit dasar ini, apakah agen farmakologi spesifik yang ditambahkan?",
+    options: ["A. Albumin intravena", "B. Spironolakton", "C. Antibiotik profilaksis", "D. Kortikosteroid (contoh: Dexamethasone/Prednison)", "E. Captopril"],
+    answer: "D",
+    jawaban: "D. Kortikosteroid (contoh: Dexamethasone/Prednison)",
+    analysis: "Pasien mengalami Sindrom Nefrotik idiopatik (SNI). Karena kondisi ini utamanya dimediasi oleh disfungsi sistem imun, pengobatan definitif lini pertamanya adalah obat penekan imun (imunosupresan). Regimen kortikosteroid oral dosis tinggi (seperti Prednison) digunakan untuk menginduksi remisi, sehingga ginjal berhenti membocorkan protein."
+  },
+  {
+    soalNo: "117",
+    question: "Anak perempuan usia 6 tahun sering kehilangan kesadaran singkat (menatap kosong ke depan selama 10 detik) dan langsung pulih kembali seperti biasa tanpa kebingungan. Pola bangkitan kejang absans (lena) ini dimulai sejak beberapa bulan lalu. Apakah diagnosis spesifik epilepsi pada anak ini?",
+    options: ["A. Juvenile absence seizure", "B. Childhood absence seizure", "C. Myoclonic seizure", "D. Focal aware seizure", "E. Lennox-Gastaut syndrome"],
+    answer: "B",
+    jawaban: "B. Childhood absence seizure",
+    analysis: "Sindrom ini merupakan epilepsi umum idiopatik di mana anak-anak secara tiba-tiba kehilangan interaksi sesaat tanpa diiringi kelojotan otot (absence / Petit mal). Awitan di usia prasekolah dan anak sekolah (usia rata-rata 4-10 tahun) diklasifikasikan sebagai Childhood absence epilepsy."
+  },
+  {
+    soalNo: "118",
+    question: "Anak usia 3 tahun dengan riwayat kontak erat ayah kandung yang terdiagnosis TB paru BTA (+). Pemeriksaan fisik paru anak normal tanpa keluhan klinis (tidak batuk, tidak demam). Namun, uji mantoux/tuberkulin memberikan hasil indurasi 13 mm. Berdasarkan sistem skor diagnostik, apakah tatalaksana medikamentosa yang tepat?",
+    options: ["A. Observasi berkala tanpa obat", "B. Terapi Pencegahan Tuberkulosis dengan Isoniazid (IPT) 6 bulan", "C. Regimen kombinasi tetap 2HRZ / 4HR", "D. Regimen kombinasi tetap 2HRZE / 4HR", "E. Regimen 2HRZ / 10HR"],
+    answer: "C",
+    jawaban: "C. Regimen kombinasi tetap 2HRZ / 4HR",
+    analysis: "Pasien mendapat 3 poin dari kontak BTA(+) dan 3 poin tambahan dari uji Mantoux positif (indurasi > 10 mm). Dengan total skor TB sebesar 6, hal ini sudah menjadi indikasi untuk pemberian terapi OAT (bukan sekadar pencegahan/profilaksis lagi). Regimen yang aman untuk anak dengan sakit TB ringan tanpa penyulit adalah paduan terapi 6 bulan: fase intensif 2 bulan INH, Rifampisin, Pirazinamid (2HRZ) dilanjutkan dengan 4 bulan INH, Rifampisin (4HR)."
+  },
+  {
+    soalNo: "119",
+    question: "Anak diantar ke IGD paska Kecelakaan Lalu Lintas (KLL). Ia mengalami gawat napas, dada sesak, takikardia, hipotensi, pergerakan pengembangan dada pada satu sisi tampak tertinggal, serta trakea terdorong ke sisi kontralateral. Diagnosis sementaranya adalah Tension Pneumothorax. Tindakan emergensi primer apa yang harus dilakukan segera?",
+    options: ["A. Needle compression (Thoracocentesis jarum)", "B. Intubasi endotrakeal", "C. Rontgen toraks segera", "D. Resusitasi cairan kristaloid cepat", "E. Pemasangan perban bertekanan"],
+    answer: "A",
+    jawaban: "A. Needle compression (Thoracocentesis jarum)",
+    analysis: "Udara yang terperangkap di rongga dada (pleural space) menekan paru-paru secara eksponensial (satu arah) sehingga menekan aliran darah vena yang masuk kembali ke jantung. Tension pneumothorax adalah krisis yang mengancam nyawa. Tindakan life-saving (penyelamatan segera) sebelum bisa menempatkan selang dada definitif (chest tube) adalah mengeluarkan tekanan udara tersebut dengan menusukkan jarum bedah atau abbocath besar (needle decompression) di ruang sela iga ke-2."
+  },
+  {
+    soalNo: "120",
+    question: "Anak balita datang dengan keluhan napas cepat, retraksi dinding dada, dan demam tinggi. Dari gejala tersebut klinisi mencurigai adanya pneumonia berat, dan anak tampak menunjukkan kegawatan. Manakah langkah prioritas pemeriksaan penunjang point-of-care awal untuk menilai objektif status kegawatan pernapasan pasien?",
+    options: ["A. BGA (Blood Gas Analysis / Analisis Gas Darah)", "B. CBC (Complete Blood Count)", "C. Foto Thorax X-Ray", "D. Kultur dahak", "E. Uji fungsi hati"],
+    answer: "A",
+    jawaban: "A. BGA (Blood Gas Analysis / Analisis Gas Darah)",
+    analysis: "Walaupun foto dada dibutuhkan untuk memverifikasi lokasi infiltrat pneumonia, langkah diagnostik emergensi pertama untuk anak dengan kegagalan napas berat (respiratory distress) adalah mengevaluasi tingkat keparahan asidosis, pertukaran gas (pO2), dan hiperkarbia (pCO2) dalam aliran darahnya. Hal ini akan memandu intervensi oksigenasinya, apakah perlu dinaikkan alat bentu pernapasannya, atau bahkan langsung dilakukan intubasi."
+  },
+  {
+    soalNo: "121",
+    question: "Seorang anak usia 5 tahun sangat sering mengalami fraktur (patah tulang) berulang meskipun hanya karena trauma minor seperti terjatuh ringan di karpet. Terdapat temuan khas sklera mata kebiruan secara klinis. Manakah kemungkinan diagnosis genetik kelainan tulang penyusun kolagen yang dialami anak ini?",
+    options: ["A. Osteogenesis imperfecta", "B. Riketsia (Rickets)", "C. Osteoporosis juvenil", "D. Defisiensi vitamin D", "E. Penyakit Paget"],
+    answer: "A",
+    jawaban: "A. Osteogenesis imperfecta",
+    analysis: "Mutasi genetik yang mengganggu sintesis kolagen tipe I menciptakan kerapuhan tulang bawaan, sindrom ini dikenal dengan istilah 'penyakit tulang rapuh' atau Osteogenesis Imperfecta. Penanda visual klasiknya meliputi tulang yang mudah remuk oleh benturan minimal, pewarnaan biru atau abu-abu pada sklera mata (akibat menipisnya sklera yang kaya kolagen tersebut sehingga lapisan koroid di bawahnya membayang), dan gangguan gigi."
+  }
+];
+
+
+
+</script>
 
 <script>
 // ===== GAME STATE =====
