@@ -801,7 +801,9 @@ const allSoal = [
     answer: "A",
     jawaban: "A. Type 1 Hypersensitivity",
     analysis: "Identik dengan Soal 68. Pasien mengalami reaksi anafilaksis (kemerahan menyeluruh berupa wheals/urtikaria dan kesulitan bernapas) segera setelah menelan alergen (lobster). Reaksi alergi yang berlangsung instan, diperantarai antibodi IgE, dan menyebabkan degranulasi sel mast diklasifikasikan sebagai Hipersensitivitas Tipe 1 (Reaksi Tipe Segera / Immediate)."
-  },
+  }
+];
+
   {
     soalNo: "101",
     question: "A newborn is found to have a low muscle tone (hypotonia) and poor feeding despite appearing alert. The mother reports she had a viral infection during pregnancy. Genetic testing reveals a mutation in the SMN1 gene. What is the most likely diagnosis?",
