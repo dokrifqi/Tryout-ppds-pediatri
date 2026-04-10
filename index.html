@@ -2,29 +2,242 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tryout PPDS (Optimized)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tryout PPDS PRO</title>
+
+<style>
+body{
+  font-family: Arial;
+  background:#0f172a;
+  color:#e2e8f0;
+  margin:0;
+  padding:20px;
+}
+
+.container{
+  max-width:800px;
+  margin:auto;
+}
+
+.btn{
+  padding:12px 20px;
+  background:#7c3aed;
+  border:none;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
+  margin:5px;
+}
+
+.qbox{
+  background:#1e293b;
+  padding:20px;
+  border-radius:12px;
+  margin-top:20px;
+}
+
+.opt{
+  display:block;
+  padding:10px;
+  margin:8px 0;
+  background:#334155;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.opt:hover{
+  background:#475569;
+}
+
+.nav{
+  margin-top:20px;
+}
+
+.timer{
+  float:right;
+  font-weight:bold;
+  color:#facc15;
+}
+</style>
+
 </head>
 <body>
-<h2>Tryout PPDS - Versi Ringan</h2>
-<button onclick="startQuiz(50)">Mulai 50 Soal</button>
+
+<div class="container">
+
+<h2>Tryout PPDS PRO</h2>
+
+<div id="menu">
+  <button class="btn" onclick="startQuiz(50)">Mulai 50 Soal</button>
+  <button class="btn" onclick="startQuiz(100)">Mulai 100 Soal</button>
+</div>
+
+<div id="quiz"></div>
+
+</div>
 
 <script>
+let soal = []
+let current = 0
+let score = 0
+let answers = []
+let timer = 0
+let interval
+
+// ================= LOAD BATCH =================
 async function loadBatch(n){
-  const res = await fetch(`batch${n}.json`)
-  return await res.json()
+  try{
+    const res = await fetch(`/batch${n}.json`)
+    
+    if(!res.ok){
+      throw new Error("Batch tidak ditemukan")
+    }
+
+    const data = await res.json()
+    console.log("Loaded batch:", n, data.length)
+    return data
+
+  }catch(e){
+    alert("Gagal load soal. Cek deploy Vercel")
+    console.error(e)
+  }
 }
 
-function getBatch(jumlah){
-  return Math.ceil(jumlah / 50)
-}
-
+// ================= START =================
 async function startQuiz(jumlah){
-  const batch = getBatch(jumlah)
-  const soal = await loadBatch(batch)
-  console.log("Loaded:", soal.length)
-  alert("Soal berhasil dimuat: " + soal.length)
+
+  document.getElementById("menu").style.display="none"
+
+  const batch = Math.ceil(jumlah/50)
+
+  let data = await loadBatch(batch)
+
+  soal = data.slice(0, jumlah)
+
+  current = 0
+  score = 0
+  answers = new Array(soal.length)
+
+  startTimer(jumlah)
+
+  render()
 }
+
+// ================= TIMER =================
+function startTimer(jumlah){
+  timer = jumlah * 60
+
+  interval = setInterval(()=>{
+    timer--
+
+    let m = Math.floor(timer/60)
+    let s = timer%60
+
+    document.getElementById("timer").innerText =
+      `${m}:${s.toString().padStart(2,'0')}`
+
+    if(timer <= 0){
+      clearInterval(interval)
+      finish()
+    }
+
+  },1000)
+}
+
+// ================= RENDER =================
+function render(){
+
+  let q = soal[current]
+
+  let html = `
+  <div class="timer">⏱ <span id="timer">--:--</span></div>
+  <div class="qbox">
+    <b>Soal ${current+1}/${soal.length}</b>
+    <p>${q.question}</p>
+  `
+
+  q.options.forEach(opt=>{
+    html += `
+    <div class="opt" onclick="selectAnswer('${opt}')">
+      ${opt}
+    </div>`
+  })
+
+  html += `</div>`
+
+  html += `
+  <div class="nav">
+    <button class="btn" onclick="prev()">Prev</button>
+    <button class="btn" onclick="next()">Next</button>
+  </div>
+  `
+
+  document.getElementById("quiz").innerHTML = html
+}
+
+// ================= ANSWER =================
+function selectAnswer(val){
+  answers[current] = val
+}
+
+// ================= NAV =================
+function next(){
+  if(current < soal.length-1){
+    current++
+    render()
+  }else{
+    finish()
+  }
+}
+
+function prev(){
+  if(current > 0){
+    current--
+    render()
+  }
+}
+
+// ================= FINISH =================
+function finish(){
+
+  clearInterval(interval)
+
+  score = 0
+
+  soal.forEach((q,i)=>{
+    if(answers[i] === q.answer){
+      score++
+    }
+  })
+
+  let html = `
+  <h2>Hasil</h2>
+  <h3>Skor: ${score} / ${soal.length}</h3>
+  <button class="btn" onclick="review()">Review Jawaban</button>
+  `
+
+  document.getElementById("quiz").innerHTML = html
+}
+
+// ================= REVIEW =================
+function review(){
+
+  let html = "<h2>Review</h2>"
+
+  soal.forEach((q,i)=>{
+    html += `
+    <div class="qbox">
+      <b>${i+1}. ${q.question}</b><br>
+      Jawaban kamu: ${answers[i] || "-"} <br>
+      Jawaban benar: ${q.answer}
+    </div>
+    `
+  })
+
+  document.getElementById("quiz").innerHTML = html
+}
+
 </script>
+
 </body>
 </html>
