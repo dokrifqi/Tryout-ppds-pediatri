@@ -361,7 +361,7 @@ h1 { text-align: center; color: #60a5fa; font-size: 2.5em; text-shadow: 0 0 20px
 <p class="subtitle">Lawan 10 Boss + 1 Dewa untuk Menaklukkan Dunia Pediatri!</p>
 
 <!-- CLASS SELECTION -->
-<div id="classSelection" class="menu-section">
+<div id="classSelection" class="menu-section" style="display: none;">
   <div class="info-banner">
     👨‍⚕️ Pilih tipe dokter Anda! Setiap tipe memiliki tingkat kesulitan berbeda.
   </div>
@@ -430,7 +430,7 @@ h1 { text-align: center; color: #60a5fa; font-size: 2.5em; text-shadow: 0 0 20px
 </div>
 
 <!-- PLAYER REGISTRATION -->
-<div id="playerRegistration" style="display: none;">
+<div id="playerRegistration" style="display: block;">
   <div class="registration-container">
     <h2 style="color: #60a5fa; margin-bottom: 30px; font-size: 1.8em;">⚔️ Pendaftaran Peserta ⚔️</h2>
     
@@ -532,13 +532,21 @@ h1 { text-align: center; color: #60a5fa; font-size: 2.5em; text-shadow: 0 0 20px
   </div>
 
   <!-- BOSS PROGRESSION -->
-  <div class="boss-list" id="bossList"></div>
+  <div style="margin-bottom: 30px;">
+    <button id="startTryOutBtn" class="btn btn-submit" onclick="startBoss()" style="width: 100%; padding: 18px; font-size: 1.2em; background: linear-gradient(135deg, #7c3aed, #a855f7); border: 2px solid #a855f7; display: none; margin-bottom: 20px;">
+      ⚔️ MULAI MENGERJAKAN SOAL
+    </button>
+    <div class="boss-list" id="bossList"></div>
+  </div>
 
   <!-- BOSS ARENA -->
   <div class="boss-arena" id="bossArena">
     <div class="boss-title" id="bossArenaTitle">⚔️ Persiapan Pertarungan</div>
     <div class="boss-description" id="bossArenaDesc">Klik soal pertama untuk memulai pertarungan!</div>
     <div class="battle-status" id="battleStatus"></div>
+    <button id="startBossBtn" class="btn btn-submit" onclick="startBoss()" style="width: 100%; padding: 15px; font-size: 1.1em; margin-top: 20px; display: none;">
+      ⚔️ MULAI TRY OUT
+    </button>
   </div>
 
   <!-- QUESTION BOX -->
@@ -633,12 +641,7 @@ let gameState = {
 // ===== CLASS SELECTION =====
 function selectClass(classType) {
   gameState.classType = classType;
-  
-  // Hide class selection, show registration
-  document.getElementById('classSelection').style.display = 'none';
-  document.getElementById('playerRegistration').style.display = 'block';
-  
-  // Focus on name input
+  // Registration is already visible, just focus on name input
   document.getElementById('playerName').focus();
 }
 
@@ -659,8 +662,18 @@ function renderBossList() {
     `;
   });
   
-  // Final Boss
-  if (gameState.bossDefeated.length === 10) {
+  // Final Boss with big question mark
+  if (gameState.bossDefeated.length < 10) {
+    // Not unlocked yet - show big ?
+    html += `
+      <div class="boss-item" style="cursor: default; opacity: 0.5;">
+        <div style="font-size: 4em; color: #fbbf24;">?</div>
+        <div class="boss-number">MUSUH TERAKHIR</div>
+        <div class="boss-name" style="color: #fbbf24;">???</div>
+      </div>
+    `;
+  } else {
+    // Unlocked - clickable
     const isFinalActive = gameState.isFinalBoss;
     const status = isFinalActive ? 'active' : 'completed';
     html += `
@@ -714,7 +727,11 @@ function loadBoss(bossIndex) {
   document.getElementById('maxMistakes').innerHTML = gameState.playerMaxHP;
   document.getElementById('playerLevel').innerHTML = gameState.playerLevel;
   
-  loadBossSoal();
+  // Show START button at top, hide questions
+  document.getElementById('startTryOutBtn').style.display = 'block';
+  document.getElementById('startBossBtn').style.display = 'none';
+  document.getElementById('questionContainer').innerHTML = '';
+  
   renderBossList();
 }
 
@@ -740,8 +757,20 @@ function loadFinalBoss() {
   document.getElementById('maxMistakes').innerHTML = gameState.playerMaxHP;
   document.getElementById('playerLevel').innerHTML = gameState.playerLevel;
   
-  loadFinalBossSoal();
+  // Show START button at top, hide questions
+  document.getElementById('startTryOutBtn').style.display = 'block';
+  document.getElementById('startBossBtn').style.display = 'none';
+  document.getElementById('questionContainer').innerHTML = '';
+  
   renderBossList();
+}
+
+// ===== START BOSS BATTLE =====
+function startBoss() {
+  document.getElementById('startTryOutBtn').style.display = 'none';
+  document.getElementById('startBossBtn').style.display = 'none';
+  loadBossSoal();
+  renderQuestion();
 }
 
 // ===== LOAD BOSS SOAL =====
